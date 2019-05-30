@@ -1,0 +1,185 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  box-sizing: border-box;
+  font-size: 62.5%;
+  background: #ffffff;
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  line-height: 1.6;
+  font-size: 2.1rem;
+  font-weight: 400;
+  font-family: -apple-system, BlinkMacSystemFont, Avenir, 'Avenir Next',
+    'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans',
+    'Helvetica Neue', sans-serif;
+  height: 100%;
+  background: #ffffff;
+
+  color: rgba(0, 0, 0, 0.84);
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+p,
+i,
+a,
+.first-letter,
+.authorName a {
+  color: rgba(0, 0, 0, 0.84);
+  text-rendering: optimizeLegibility;
+}
+
+h1 {
+  font-size: 48px;
+  text-align: left;
+  margin-bottom: 8px;
+}
+
+h2 {
+  font-size: 26px;
+  font-weight: 700;
+  padding: 0;
+  margin: 56px 0 -13px -1.883px;
+  text-align: left;
+  line-height: 34.5px;
+  letter-spacing: -0.45px;
+}
+
+p,
+i,
+a {
+  margin-top: 21px;
+  font-size: 21px;
+  letter-spacing: -0.03px;
+  line-height: 1.58;
+}
+
+a {
+  text-decoration: underline;
+}
+
+blockquote {
+  font-size: 30px;
+  font-style: italic;
+  letter-spacing: -0.36px;
+  line-height: 44.4px;
+  overflow-wrap: break-word;
+  margin: 55px 0 33px 0;
+  color: rgba(0, 0, 0, 0.68);
+  border-left: 3px solid rgba(0, 0, 0, 0.84);
+  padding-left: 20px;
+  margin-left: -23px;
+  padding-bottom: 2px;
+}
+
+blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+pre,
+code {
+  font-size: 16px;
+  background: rgb(243, 243, 243);
+  font-family: 'SFMono-Regular', Menlo, Monaco, 'Courier New', Courier,
+    monospace;
+}
+
+code {
+  padding: 3px 4px;
+  margin: 0 2px;
+}
+
+pre {
+  overflow: scroll;
+  padding: 20px;
+  white-space: pre-wrap;
+}
+
+pre code {
+  padding: 0;
+  margin: 0;
+}
+
+mark,
+.highlighted {
+  background: #7dffb3;
+}
+
+.first-letter {
+  overflow-wrap: break-word;
+  font-size: 60px;
+  line-height: 60px;
+  display: block;
+  position: relative;
+  float: left;
+  margin: 0px 7px 0 -5px;
+}
+
+.subtitle {
+  color: rgba(0, 0, 0, 0.54);
+  margin: 0 0 24px 0;
+}
+
+::selection {
+  background-color: lavender;
+}
+
+img {
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+}
+.anchor {
+  position: absolute;
+  left: -30px;
+  opacity: 0;
+  width: 30px;
+}
+
+h1:hover .anchor,
+h2:hover .anchor,
+h3:hover .anchor,
+h4:hover .anchor,
+h5:hover .anchor,
+h6:hover .anchor {
+  opacity: 1;
+}
+
+h1 .anchor {
+  margin-top: 21px;
+}
+h3 .anchor {
+  margin-top: 5px;
+}
+h4 .anchor {
+  margin-top: 2px;
+}
+
+figcaption {
+  width: 100%;
+  margin-top: 10px;
+  line-height: 1.4;
+  color: rgba(0, 0, 0, 0.68);
+  letter-spacing: 0;
+  text-align: center;
+  font-size: 14px;
+}

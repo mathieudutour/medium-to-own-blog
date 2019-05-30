@@ -1,0 +1,75 @@
+{
+  "name": "{{ mediumUsername }}-blog",
+  "private": true,
+  "description": "",
+  "version": "0.1.0",
+  "author": "{{ authorName }} <{{ authorEmail }}>",
+  "repository": {
+    "type": "git",
+    "url": "git+{{ githubURL }}.git"
+  },
+  "dependencies": {
+    "@mdx-js/mdx": "^1.0.16",
+    "@mdx-js/react": "^1.0.16",
+    "@weknow/gatsby-remark-twitter": "^0.2.1",
+    "gatsby": "^2.4.2",
+    "gatsby-image": "^2.1.1",
+    "gatsby-mdx": "^0.6.3",
+    "gatsby-plugin-feed": "^2.2.1",
+    "gatsby-plugin-manifest": "^2.1.1",
+    "gatsby-plugin-offline": "^2.1.0",
+    "gatsby-plugin-react-helmet": "^3.0.12",
+    "gatsby-plugin-sharp": "^2.0.36",
+    "gatsby-remark-autolink-headers": "^2.0.16",
+    "gatsby-remark-copy-linked-files": "^2.0.12",
+    "gatsby-remark-embed-video": "^1.7.1",
+    "gatsby-remark-external-links": "^0.0.4",
+    "gatsby-remark-images": "^3.0.11",
+    "gatsby-remark-prismjs": "^3.2.9",
+    "gatsby-remark-responsive-iframe": "^2.1.1",
+    "gatsby-remark-smartypants": "^2.0.9",
+    "gatsby-source-filesystem": "^2.0.33",
+    "gatsby-transformer-sharp": "^2.1.19",
+    "prismjs": "^1.16.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-helmet": "^5.2.1"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^4.3.0",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react": "^7.13.0",
+    "lighthousebot": "git+https://github.com/GoogleChromeLabs/lighthousebot.git",
+    "lint-staged": "^8.1.7",
+    "pre-commit": "^1.2.2",
+    "prettier": "^1.17.0",
+    "wait-for-netlify-preview": "^1.2.1"
+  },
+  "keywords": [
+    "gatsby",
+    "medium",
+    "blog"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "build": "gatsby build",
+    "dev": "gatsby develop",
+    "format": "prettier --write src/**/*.{js,jsx}",
+    "lh": "lighthousebot",
+    "start": "npm run dev",
+    "serve": "gatsby serve",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
+  },
+  "prettier": {
+    "proseWrap": "never",
+    "singleQuote": true,
+    "trailingComma": "es5",
+    "semi": false
+  }
+}

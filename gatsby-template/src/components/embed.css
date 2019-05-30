@@ -1,0 +1,16 @@
+.embed {
+  position: relative;
+}
+
+.embed img {
+  display: block;
+  height: auto;
+  width: 100%;
+}
+.embed iframe {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}

@@ -1,0 +1,5 @@
+- [ ] how to use git to publish the blog
+- [ ] how to create an article
+- [ ] how to update an article
+- [ ] draft/published
+- [ ] canonical link

@@ -1,0 +1,20 @@
+language: node_js
+node_js:
+  - '12'
+
+cache:
+  directories:
+    - node_modules
+
+notifications:
+  email: false
+
+jobs:
+  include:
+    - stage: Test
+      install: npm ci
+      script: npm run test
+    - stage: Lighthouse
+      if: type = pull_request
+      install: npm ci
+      script: npm run lh --perf 90 --pwa 90 --a11y 90 --bp 90 --seo 90 "$(wait-for-netlify-preview)"

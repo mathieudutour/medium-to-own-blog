@@ -1,0 +1,74 @@
+.main-bio-container {
+  display: flex;
+  margin-top: 10em;
+}
+.main-bio {
+  flex: 0 0 80%;
+  margin-right: 1.5rem;
+}
+.main-bio h1 {
+  margin-top: 0;
+}
+
+.horizontal-links svg {
+  width: 16px;
+  height: 16px;
+}
+
+.horizontal-links svg path {
+  fill: rgba(0, 0, 0, 0.48);
+}
+
+.main-bio-container svg:hover path {
+  fill: #7dffb3;
+}
+
+@media (max-width: 1024px) {
+  .main-bio-container {
+    flex-wrap: wrap;
+  }
+  .main-bio {
+    order: 1;
+    flex: 0 0 100%;
+    margin-right: 0;
+  }
+  .main-bio h1 {
+    margin-top: 2.5rem;
+  }
+}
+
+/* horizontal lists of links */
+.horizontal-links {
+  list-style-type: none;
+  margin-bottom: 0;
+  padding-left: 0;
+}
+.horizontal-links > li {
+  display: inline-block;
+  margin-right: 1.5rem;
+  margin-bottom: 0;
+}
+.horizontal-links > li:last-child {
+  margin-right: 0;
+}
+@media only screen and (max-width: 480px) {
+  .horizontal-links {
+    margin-left: 0;
+  }
+}
+@media only screen and (max-width: 320px) {
+  .horizontal-links {
+    display: block;
+    font-size: 0.8rem;
+  }
+  .horizontal-links > li {
+    margin-right: 0.8rem;
+  }
+}
+
+/* footer */
+@media (max-width: 375px) {
+  footer {
+    display: block;
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "name": "medium-to-own-blog",
+  "version": "0.1.0",
+  "description": "Switch from Medium to your own blog in a few minutes",
+  "bin": {
+    "medium-to-gatsby": "index.js"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "node ./index.js"
+  },
+  "author": "Mathieu Dutour <mathieu@dutour.me>",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-prettier": "^4.3.0",
+    "eslint-plugin-import": "^2.17.3",
+    "eslint-plugin-prettier": "^3.1.0",
+    "prettier": "^1.17.1"
+  },
+  "prettier": {
+    "proseWrap": "never",
+    "singleQuote": true,
+    "trailingComma": "es5",
+    "semi": false
+  },
+  "dependencies": {
+    "fs-extra": "^8.0.1",
+    "inquirer": "^6.3.1",
+    "jsdom": "^15.1.0",
+    "jszip": "^3.2.1",
+    "ora": "^3.4.0",
+    "request": "^2.88.0",
+    "slugify": "^1.3.4",
+    "turndown": "^5.0.3",
+    "xml-js": "^1.6.11"
+  }
+}

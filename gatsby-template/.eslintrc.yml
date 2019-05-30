@@ -1,0 +1,24 @@
+---
+root: true
+parser: babel-eslint
+extends:
+  - airbnb
+  - plugin:import/errors
+  - prettier
+plugins:
+  - prettier
+env:
+  node: true
+globals:
+  window: true
+  document: true
+  navigator: true
+rules:
+  no-underscore-dangle: 0
+  react/require-default-props: 0
+  react/destructuring-assignment: 0
+  react/jsx-one-expression-per-line: 0
+  react/forbid-prop-types: 1
+  react/jsx-filename-extension: 0
+  react/no-unescaped-entities: 0
+  react/prop-types: 0
