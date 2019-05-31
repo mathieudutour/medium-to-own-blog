@@ -6,6 +6,16 @@
     "medium-to-own-blog": "index.js"
   },
   "main": "index.js",
+  "files": [
+    "/gatsby-template",
+    "/add-gatsby-files.js",
+    "/default-icon.png",
+    "/generate-md.js",
+    "/get-profile.js",
+    "/index.js",
+    "/parse-profile.js",
+    "/utils.js"
+  ],
   "scripts": {
     "test": "node ./index.js"
   },

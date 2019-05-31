@@ -2,6 +2,8 @@
 
 _Switch from Medium to your own blog in a few minutes._
 
+![demo](./docs/screencast.gif)
+
 ## Usage
 
 _Requires [Node.js](https://nodejs.org/en/)_
