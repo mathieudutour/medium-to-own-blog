@@ -182,7 +182,9 @@ module.exports.getMarkdownFromPost = async (profile, localContent) => {
     const title = onlineDom.querySelector('.graf--title') ? onlineDom.querySelector('.graf--title').textContent : ""
 
     // remove some extra stuff from the html
-    onlineDom.querySelector('.graf--title').remove()
+    if (onlineDom.querySelector('.graf--title')) {
+      onlineDom.querySelector('.graf--title').remove()
+    }
     if (onlineDom.querySelector('.section-divider')) {
       onlineDom.querySelector('.section-divider').remove()
     }
