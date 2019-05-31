@@ -1,9 +1,9 @@
 {
   "name": "medium-to-own-blog",
-  "version": "0.1.0",
+  "version": "0.1.5",
   "description": "Switch from Medium to your own blog in a few minutes",
   "bin": {
-    "medium-to-gatsby": "index.js"
+    "medium-to-own-blog": "index.js"
   },
   "main": "index.js",
   "scripts": {

@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const { spawn } = require('child_process')
 const inquirer = require('inquirer')
 const ora = require('ora')

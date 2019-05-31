@@ -25,7 +25,7 @@ function replaceIframe(content, iframe) {
         // something like https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Fwww.youtube.com%2Fembed%2Fcz1t_oo6k9c%3Ffeature%3Doembed&url=http%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3Dcz1t_oo6k9c&image=https%3A%2F%2Fi.ytimg.com%2Fvi%2Fcz1t_oo6k9c%2Fhqdefault.jpg&key=a19fcc184b9711e1b4764040d3dc5c07&type=text%2Fhtml&schema=youtube
         const nestedSource = nestedIframe.attributes.getNamedItem('src').value
         const query = querystring.parse(nestedSource.split('?')[1])
-        console.log(query)
+
         return {
           src: query.src,
           url: query.url,

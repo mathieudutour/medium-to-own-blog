@@ -41,7 +41,7 @@ module.exports.getProfile = async zip => {
 
   const avatarBuffer =
     (await request(avatarUrl, { encoding: null }).catch(() => {})) ||
-    (await fs.readFile(path.join(__dirname, './default-icon.png'), 'buffer'))
+    (await fs.readFile(path.join(__dirname, './default-icon.png')))
 
   if (avatarBuffer) {
     await fs.writeFile(
