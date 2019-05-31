@@ -12,6 +12,8 @@ _Requires [Node.js](https://nodejs.org/en/)_
 npx medium-to-own-blog
 ```
 
+To see an example of what your blog will look like, check [https://mathieudutour-blog.netlify.com](https://mathieudutour-blog.netlify.com).
+
 ## Documentation
 
 Head over [here](./docs/README.md) to find a few guides to help you editing the content of you newly created blog.
