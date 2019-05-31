@@ -26,6 +26,7 @@
 @media (max-width: 1024px) {
   .main-bio-container {
     flex-wrap: wrap;
+    margin-top: 2em;
   }
   .main-bio {
     order: 1;
