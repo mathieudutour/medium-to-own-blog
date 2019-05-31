@@ -18,9 +18,8 @@ Hello there!
 Let's move your Medium content to your very own website.
 First of all, you need to download your medium content.
 
-1. Head over https://medium.com/me/settings
-2. Scroll down to the "Account" section
-3. Click on the "Download your information" button
+1. Head over https://medium.com/me/export
+2. Click on the "Download your information" button
 
 In a bit, you will receive an email from Medium with a link to "Download your archive".
 Download it and drag-and-drop the resulting zip file here.
