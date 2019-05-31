@@ -169,6 +169,8 @@ module.exports.getMarkdownFromPost = async (
     const metadata = {}
     let md = ''
 
+    let slug
+
     if (localDom.querySelector('.p-canonical')) {
       const canonicalLink = localDom
         .querySelector('.p-canonical')
@@ -184,10 +186,17 @@ module.exports.getMarkdownFromPost = async (
         return
       }
 
-      const title = onlineDom.querySelector('.graf--title').textContent
+      const titleElement = onlineDom.querySelector('.graf--title')
+
+      // some articles might not have a title
+      const title = titleElement ? titleElement.textContent : ''
+
+      slug = title ? slugify(title) : path.basename(canonicalLink)
 
       // remove some extra stuff from the html
-      onlineDom.querySelector('.graf--title').remove()
+      if (titleElement) {
+        titleElement.remove()
+      }
       if (onlineDom.querySelector('.section-divider')) {
         onlineDom.querySelector('.section-divider').remove()
       }
@@ -196,6 +205,8 @@ module.exports.getMarkdownFromPost = async (
       }
 
       md = td.turndown(onlineDom.querySelector('.postArticle-content'))
+
+      const canonicalMeta = onlineDom.querySelector("link[rel='canonical']")
 
       metadata.title = title
       metadata.description = onlineDom
@@ -206,7 +217,9 @@ module.exports.getMarkdownFromPost = async (
         .attributes.getNamedItem('content').value
       metadata.categories = tags.map(t => t.textContent)
       metadata.published = true
-      metadata.canonicalLink = canonicalLink
+      metadata.canonicalLink = canonicalMeta
+        ? canonicalMeta.attributes.getNamedItem('href').value
+        : canonicalLink
     } else {
       // that's a draft
       const title =
@@ -214,8 +227,12 @@ module.exports.getMarkdownFromPost = async (
           localDom.querySelector('.p-name') || { textContent: '' }
         ).textContent.trim() || `Untitled Draft ${++untitledCounter}`
 
+      slug = slugify(title)
+
       // remove some extra stuff from the html
-      localDom.querySelector('.p-name').remove()
+      if (localDom.querySelector('.p-name')) {
+        localDom.querySelector('.p-name').remove()
+      }
       if (localDom.querySelector('.graf--title')) {
         localDom.querySelector('.graf--title').remove()
       }
@@ -237,8 +254,6 @@ module.exports.getMarkdownFromPost = async (
       metadata.date = new Date().toISOString()
       metadata.published = false
     }
-
-    const slug = slugify(metadata.title)
 
     const frontmatter = `---
 title: "${metadata.title}"
