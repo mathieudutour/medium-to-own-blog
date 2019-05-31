@@ -10,7 +10,7 @@ const socialURLs = {
   facebook: 'https://facebook.com',
   medium: 'https://medium.com',
   linkedin: 'https://linkedin.com/in',
-  instagram: 'https://intagram.com',
+  instagram: 'https://instagram.com',
 }
 
 const socialIcons = {
