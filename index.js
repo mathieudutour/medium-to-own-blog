@@ -181,7 +181,7 @@ and clicking on "Change site name".
     return inquirer.prompt([
       {
         name: 'dontCare',
-        message: 'Press enter when you are read',
+        message: 'Press enter when you are ready',
       },
     ])
   })
