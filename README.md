@@ -12,7 +12,13 @@ _Requires [Node.js](https://nodejs.org/en/)_
 npx medium-to-own-blog
 ```
 
+## Documentation
+
+Head over [here](./docs/README.md) to find a few guides to help you editing the content of you newly created blog.
+
 ## Technical stack
+
+This project is only possible thanks to the awesomeness of the following projects:
 
 - [Gatsby](https://www.gatsbyjs.org/)
 - [GitHub](https://github.com)
