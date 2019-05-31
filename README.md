@@ -18,6 +18,10 @@ To see an example of what your blog will look like, check [https://mathieudutour
 
 Head over [here](./docs/README.md) to find a few guides to help you editing the content of you newly created blog.
 
+## Contributing
+
+Any idea on how to make the process easier or how to improve the generated blog? [Open a new issue](https://github.com/mathieudutour/medium-to-own-blog/issues/new)! We need all the help we can get to make this project awesome!
+
 ## Technical stack
 
 This project is only possible thanks to the awesomeness of the following projects:
