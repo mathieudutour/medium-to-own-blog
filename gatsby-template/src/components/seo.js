@@ -35,7 +35,7 @@ function SEO({ description, lang, meta, keywords, title, canonicalLink }) {
       htmlAttributes={{
         lang,
       }}
-      title={title}
+      title={title || site.siteMetadata.title}
       meta={[
         {
           name: `description`,
@@ -43,7 +43,7 @@ function SEO({ description, lang, meta, keywords, title, canonicalLink }) {
         },
         {
           property: `og:title`,
-          content: title,
+          content: title || site.siteMetadata.title,
         },
         {
           property: `og:description`,
@@ -99,7 +99,7 @@ SEO.propTypes = {
   lang: PropTypes.string,
   meta: PropTypes.arrayOf(PropTypes.object),
   keywords: PropTypes.arrayOf(PropTypes.string),
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   canonicalLink: PropTypes.string,
 }
 
