@@ -156,135 +156,145 @@ td.addRule('image', {
   },
 })
 
-module.exports.getMarkdownFromPost = async (profile, localContent) => {
-  imageDownloader = []
-  iframeParser = []
-  const localDom = new JSDOM(localContent).window.document
+module.exports.getMarkdownFromPost = async (
+  profile,
+  localContent,
+  fileName
+) => {
+  try {
+    imageDownloader = []
+    iframeParser = []
+    const localDom = new JSDOM(localContent).window.document
 
-  const metadata = {}
-  let md = ''
+    const metadata = {}
+    let md = ''
 
-  if (localDom.querySelector('.p-canonical')) {
-    const canonicalLink = localDom
-      .querySelector('.p-canonical')
-      .attributes.getNamedItem('href').value
+    if (localDom.querySelector('.p-canonical')) {
+      const canonicalLink = localDom
+        .querySelector('.p-canonical')
+        .attributes.getNamedItem('href').value
 
-    const onlineContent = await request(canonicalLink)
-    const onlineDom = new JSDOM(onlineContent).window.document
+      const onlineContent = await request(canonicalLink)
+      const onlineDom = new JSDOM(onlineContent).window.document
 
-    const tags = Array.from(onlineDom.querySelectorAll('.js-postTags li'))
+      const tags = Array.from(onlineDom.querySelectorAll('.js-postTags li'))
 
-    if (tags.length === 0) {
-      // that's a comment
-      return
-    }
-
-    const title = onlineDom.querySelector('.graf--title').textContent
-
-    // remove some extra stuff from the html
-    onlineDom.querySelector('.graf--title').remove()
-    if (onlineDom.querySelector('.section-divider')) {
-      onlineDom.querySelector('.section-divider').remove()
-    }
-    if (onlineDom.querySelector('.js-postMetaLockup')) {
-      onlineDom.querySelector('.js-postMetaLockup').remove()
-    }
-
-    md = td.turndown(onlineDom.querySelector('.postArticle-content'))
-
-    metadata.title = title
-    metadata.description = onlineDom
-      .querySelector("meta[name='description']")
-      .attributes.getNamedItem('content').value
-    metadata.date = onlineDom
-      .querySelector("meta[property='article:published_time']")
-      .attributes.getNamedItem('content').value
-    metadata.categories = tags.map(t => t.textContent)
-    metadata.published = true
-    metadata.canonicalLink = canonicalLink
-  } else {
-    // that's a draft
-    const title =
-      localDom.querySelector('.p-name').textContent.trim() ||
-      `Untitled Draft ${++untitledCounter}`
-
-    // remove some extra stuff from the html
-    localDom.querySelector('.p-name').remove()
-    if (localDom.querySelector('.graf--title')) {
-      localDom.querySelector('.graf--title').remove()
-    }
-    if (localDom.querySelector('.graf--subtitle')) {
-      localDom.querySelector('.graf--subtitle').remove()
-    }
-    if (localDom.querySelector('.section-divider')) {
-      localDom.querySelector('.section-divider').remove()
-    }
-
-    md = td.turndown(localDom.querySelector('.e-content'))
-
-    metadata.title = title
-    metadata.description = (
-      localDom.querySelector('.p-summary[data-field="subtitle"]') || {
-        textContent: '',
+      if (tags.length === 0) {
+        // that's a comment
+        return
       }
-    ).textContent.trim()
-    metadata.date = new Date().toISOString()
-    metadata.published = false
-  }
 
-  const slug = slugify(metadata.title)
+      const title = onlineDom.querySelector('.graf--title').textContent
 
-  const frontmatter = `---
+      // remove some extra stuff from the html
+      onlineDom.querySelector('.graf--title').remove()
+      if (onlineDom.querySelector('.section-divider')) {
+        onlineDom.querySelector('.section-divider').remove()
+      }
+      if (onlineDom.querySelector('.js-postMetaLockup')) {
+        onlineDom.querySelector('.js-postMetaLockup').remove()
+      }
+
+      md = td.turndown(onlineDom.querySelector('.postArticle-content'))
+
+      metadata.title = title
+      metadata.description = onlineDom
+        .querySelector("meta[name='description']")
+        .attributes.getNamedItem('content').value
+      metadata.date = onlineDom
+        .querySelector("meta[property='article:published_time']")
+        .attributes.getNamedItem('content').value
+      metadata.categories = tags.map(t => t.textContent)
+      metadata.published = true
+      metadata.canonicalLink = canonicalLink
+    } else {
+      // that's a draft
+      const title =
+        (
+          localDom.querySelector('.p-name') || { textContent: '' }
+        ).textContent.trim() || `Untitled Draft ${++untitledCounter}`
+
+      // remove some extra stuff from the html
+      localDom.querySelector('.p-name').remove()
+      if (localDom.querySelector('.graf--title')) {
+        localDom.querySelector('.graf--title').remove()
+      }
+      if (localDom.querySelector('.graf--subtitle')) {
+        localDom.querySelector('.graf--subtitle').remove()
+      }
+      if (localDom.querySelector('.section-divider')) {
+        localDom.querySelector('.section-divider').remove()
+      }
+
+      md = td.turndown(localDom.querySelector('.e-content'))
+
+      metadata.title = title
+      metadata.description = (
+        localDom.querySelector('.p-summary[data-field="subtitle"]') || {
+          textContent: '',
+        }
+      ).textContent.trim()
+      metadata.date = new Date().toISOString()
+      metadata.published = false
+    }
+
+    const slug = slugify(metadata.title)
+
+    const frontmatter = `---
 title: "${metadata.title}"
 description: "${metadata.description}"
 date: "${metadata.date}"
 categories: ${
-    metadata.categories
-      ? `
+      metadata.categories
+        ? `
 ${metadata.categories.map(c => `  - ${c}`).join('\n')}
 `
-      : '[]'
-  }
+        : '[]'
+    }
 published: ${metadata.published ? 'true' : 'false'}${
-    metadata.canonicalLink
-      ? `
+      metadata.canonicalLink
+        ? `
 canonicalLink: ${metadata.canonicalLink}`
-      : ''
-  }
+        : ''
+    }
 ---
 
 `
 
-  await fs.mkdirp(withOutputPath(profile, `./content/${slug}`))
+    await fs.mkdirp(withOutputPath(profile, `./content/${slug}`))
 
-  await Promise.all(
-    imageDownloader
-      .map(p =>
-        p.then(({ body, filename }) => {
-          if (body) {
-            fs.writeFile(
-              withOutputPath(profile, `./content/${slug}/${filename}`),
-              body
-            )
-          }
-        })
-      )
-      .concat(
-        iframeParser.map(p =>
-          p.then(({ src, placeholder, height, width }) => {
-            if (src) {
-              md = md.replace(
-                placeholder,
-                `<Embed src="${src}" height={${height}} width={${width}} />`
+    await Promise.all(
+      imageDownloader
+        .map(p =>
+          p.then(({ body, filename }) => {
+            if (body) {
+              fs.writeFile(
+                withOutputPath(profile, `./content/${slug}/${filename}`),
+                body
               )
             }
           })
         )
-      )
-  )
+        .concat(
+          iframeParser.map(p =>
+            p.then(({ src, placeholder, height, width }) => {
+              if (src) {
+                md = md.replace(
+                  placeholder,
+                  `<Embed src="${src}" height={${height}} width={${width}} />`
+                )
+              }
+            })
+          )
+        )
+    )
 
-  await fs.writeFile(
-    withOutputPath(profile, `./content/${slug}/index.md`),
-    `${frontmatter}${md}`
-  )
+    await fs.writeFile(
+      withOutputPath(profile, `./content/${slug}/index.md`),
+      `${frontmatter}${md}`
+    )
+  } catch (err) {
+    err.message = `Error parsing ${fileName}: ${err.message}`
+    throw err
+  }
 }

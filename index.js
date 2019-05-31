@@ -64,7 +64,7 @@ inquirer
           )
         })
         .then(() => zippedPost.async('text'))
-        .then(content => getMarkdownFromPost(profile, content))
+        .then(content => getMarkdownFromPost(profile, content, zippedPost.name))
     }, Promise.resolve())
   })
   .then(() => {
