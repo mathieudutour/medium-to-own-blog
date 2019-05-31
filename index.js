@@ -109,6 +109,14 @@ Happy writing!`)
 
     spinner.start('Updating the project to use the repository URL')
 
+    const remoteURL = repoURL
+
+    if (repoURL.match(/^git@github.com:.*/i)) {
+      repoURL = repoURL
+        .replace(/^git@github.com:.*/i, 'https://github.com/')
+        .replace(/\.git$/i, '')
+    }
+
     return Promise.all([
       fs
         .readFile(withOutputPath(profile, './package.json'), 'utf8')
@@ -130,7 +138,7 @@ Happy writing!`)
         ),
     ]).then(() =>
       exec(
-        `git init && git remote add origin ${repoURL} && git add . && git commit -m "first commit :tada:"`,
+        `git init && git remote add origin ${remoteURL} && git add . && git commit -m "first commit :tada:"`,
         {
           cwd: withOutputPath(profile),
         }
