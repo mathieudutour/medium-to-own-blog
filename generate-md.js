@@ -228,7 +228,7 @@ module.exports.getMarkdownFromPost = async (
       // some articles might not have a title
       const title = titleElement ? titleElement.textContent : ''
 
-      slug = title ? slugify(title) : path.basename(canonicalLink)
+      slug = title ? slugify(title).toLowerCase() : path.basename(canonicalLink)
 
       // remove some extra stuff from the html
       if (titleElement) {
@@ -264,7 +264,7 @@ module.exports.getMarkdownFromPost = async (
           localDom.querySelector('.p-name') || { textContent: '' }
         ).textContent.trim() || `Untitled Draft ${++untitledCounter}`
 
-      slug = slugify(title)
+      slug = slugify(title).toLowerCase()
 
       // remove some extra stuff from the html
       if (localDom.querySelector('.p-name')) {
