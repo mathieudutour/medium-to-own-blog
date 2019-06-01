@@ -68,6 +68,7 @@ function Bio() {
             social {
               twitter
               github
+              facebook
               medium
               linkedin
               instagram
