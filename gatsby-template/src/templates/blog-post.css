@@ -1,3 +1,9 @@
+.blog h1 a {
+  text-decoration: none;
+  font-size: 48px;
+  color: lavender;
+}
+
 .blog h3 {
   margin-top: 2.5em;
 }
