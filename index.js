@@ -43,6 +43,12 @@ inquirer
     return JSZip.loadAsync(body)
   })
   .then(zip => {
+    if (!zip.file('profile/profile.html')) {
+      throw new Error(
+        'It seems that we cannot find your profile in the Medium archive. Are you sure you gave the right path?\nIf so, please open an issue here: https://github.com/mathieudutour/medium-to-own-blog/issues/new.'
+      )
+    }
+
     spinner.succeed('Parsed Medium content')
     spinner.start('Parsing the Medium profile')
 
@@ -218,6 +224,9 @@ Happy blogging!
   })
   .then(() => process.exit(0))
   .catch(err => {
+    if (spinner) {
+      spinner.fail()
+    }
     // eslint-disable-next-line no-console
     console.log()
     // eslint-disable-next-line no-console
