@@ -35,7 +35,9 @@ export default function PageTemplate({ data: { mdx, site }, pageContext }) {
       <section className="center blog">
         <article className="container small">
           <header>
-            <h1>{mdx.frontmatter.title}</h1>
+            <h1>
+              <Link to="/">«</Link> {mdx.frontmatter.title}
+            </h1>
             <p>
               {formatPostDate(mdx.frontmatter.date)}
               {` • ${formatReadingTime(mdx.timeToRead)}`}
