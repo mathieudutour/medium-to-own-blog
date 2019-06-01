@@ -23,6 +23,12 @@
 4. After the `---`, you can write any markdown.
 5. You can add this file using the editor on GitHub.com which also has a Preview tab.
 
+## Updating an article
+
+1. Go to the existing file that was created in the `content` folder.
+2. Inside the folder, go to the `index.md` file.
+3. Inside the file, you can update the existing using the frontmatter syntax:
+
 ## Tasks
 
 - [ ] how to use git to publish the blog
