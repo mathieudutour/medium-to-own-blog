@@ -14,8 +14,23 @@ function replaceIframe(content, iframe) {
   const placeholder = `Embed placeholder ${Math.random()}`
   const source = iframe.attributes.getNamedItem('src').value
 
-  const height = iframe.attributes.getNamedItem('height').value
-  const width = iframe.attributes.getNamedItem('width').value
+  let aspectRatioPlaceholder = iframe
+
+  while (
+    !aspectRatioPlaceholder.classList.contains('aspectRatioPlaceholder') &&
+    aspectRatioPlaceholder.parentNode
+  ) {
+    aspectRatioPlaceholder = aspectRatioPlaceholder.parentNode
+  }
+
+  const aspectRatioFill =
+    aspectRatioPlaceholder &&
+    aspectRatioPlaceholder.querySelector('.aspectRatioPlaceholder-fill')
+
+  const aspectRatio = aspectRatioFill
+    ? parseFloat(aspectRatioFill.style.paddingBottom) / 100
+    : 1
+
   iframeParser.push(
     request(`https://medium.com${source}`)
       .then(body => {
@@ -29,8 +44,7 @@ function replaceIframe(content, iframe) {
         return {
           src: query.src,
           url: query.url,
-          width,
-          height,
+          aspectRatio,
           placeholder,
         }
       })
@@ -292,11 +306,11 @@ canonicalLink: ${metadata.canonicalLink}`
         )
         .concat(
           iframeParser.map(p =>
-            p.then(({ src, placeholder, height, width }) => {
+            p.then(({ src, placeholder, aspectRatio }) => {
               if (src) {
                 md = md.replace(
                   placeholder,
-                  `<Embed src="${src}" height={${height}} width={${width}} />`
+                  `<Embed src="${src}" aspectRation={${aspectRatio}} />`
                 )
               }
             })
