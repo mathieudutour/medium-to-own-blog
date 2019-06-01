@@ -33,7 +33,7 @@
 
 - [ ] how to use git to publish the blog
 - [x] how to create an article
-- [ ] how to update an article
+- [x] how to update an article
 - [ ] draft/published
 - [ ] canonical link
 - [ ] add analytics for your blog
