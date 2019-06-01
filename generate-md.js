@@ -333,7 +333,7 @@ canonicalLink: ${metadata.canonicalLink}`
               if (src) {
                 md = md.replace(
                   placeholder,
-                  `<Embed src="${src}" aspectRation={${aspectRatio}} />`
+                  `<Embed src="${src}" aspectRatio={${aspectRatio}} />`
                 )
               } else if (placeholder) {
                 // remove the placeholder if we can't find the source
