@@ -37,6 +37,29 @@ function replaceIframe(content, iframe) {
         const iframeDom = new JSDOM(body).window.document
         const nestedIframe = iframeDom.querySelector('iframe')
 
+        if (!nestedIframe) {
+          // check if it's a gist
+          const gist = iframeDom.querySelector(
+            'script[src^="https://gist.github.com"]'
+          )
+
+          if (gist) {
+            return {
+              src: gist.attributes
+                .getNamedItem('src')
+                .value.replace(/\.js$/, '.pibb'),
+              aspectRatio,
+              placeholder,
+            }
+          }
+
+          // remove the placeholder if we can't find the source
+          return {
+            error: true,
+            placeholder,
+          }
+        }
+
         // something like https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Fwww.youtube.com%2Fembed%2Fcz1t_oo6k9c%3Ffeature%3Doembed&url=http%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3Dcz1t_oo6k9c&image=https%3A%2F%2Fi.ytimg.com%2Fvi%2Fcz1t_oo6k9c%2Fhqdefault.jpg&key=a19fcc184b9711e1b4764040d3dc5c07&type=text%2Fhtml&schema=youtube
         const nestedSource = nestedIframe.attributes.getNamedItem('src').value
         const query = querystring.parse(nestedSource.split('?')[1])
@@ -312,6 +335,9 @@ canonicalLink: ${metadata.canonicalLink}`
                   placeholder,
                   `<Embed src="${src}" aspectRation={${aspectRatio}} />`
                 )
+              } else if (placeholder) {
+                // remove the placeholder if we can't find the source
+                md = md.replace(placeholder, '')
               }
             })
           )
