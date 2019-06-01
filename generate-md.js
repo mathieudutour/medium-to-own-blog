@@ -45,9 +45,7 @@ function replaceIframe(content, iframe) {
 
           if (gist) {
             return {
-              src: gist.attributes
-                .getNamedItem('src')
-                .value.replace(/\.js$/, '.pibb'),
+              src: gist.attributes.getNamedItem('src').value,
               aspectRatio,
               placeholder,
             }

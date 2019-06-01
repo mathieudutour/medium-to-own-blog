@@ -1,9 +1,46 @@
 /* eslint-disable jsx-a11y/iframe-has-title */
-import React from 'react'
+import React, { useRef, useEffect } from 'react'
 
 import './embed.css'
 
 function Embed({ aspectRatio, src }) {
+  const iframeRef = useRef(null)
+
+  useEffect(() => {
+    const iframe = iframeRef.current
+    if (!iframe) {
+      return
+    }
+
+    let doc = iframe.document
+    if (iframe.contentDocument) doc = iframe.contentDocument
+    else if (iframe.contentWindow) doc = iframe.contentWindow.document
+
+    const gistScript = `<script type="text/javascript" src="${src}"></script>`
+    const styles = '<style>*{font-size:12px;}</style>'
+    const elementId = src.replace('https://gist.github.com/', '')
+    const resizeScript = `onload="parent.document.getElementById('${elementId}').style.height=document.body.scrollHeight + 'px'"`
+    const iframeHtml = `<html><head><base target="_parent">${styles}</head><body ${resizeScript}>${gistScript}</body></html>`
+
+    doc.open()
+    doc.writeln(iframeHtml)
+    doc.close()
+  }, [iframeRef])
+
+  if (src && src.match(/^https:\/\/gist.github.com/)) {
+    return (
+      <div className="embed-auto-height">
+        <iframe
+          id={src.replace('https://gist.github.com/', '')}
+          ref={iframeRef}
+          width="100%"
+          allowFullScreen
+          frameBorder={0}
+        />
+      </div>
+    )
+  }
+
   return (
     <div className="embed">
       <img
