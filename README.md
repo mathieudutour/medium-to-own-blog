@@ -2,7 +2,7 @@
 
 _Switch from Medium to your own blog in a few minutes._
 
-![demo](./docs/screencast.gif)
+[![demo](./docs/screencast.gif)](https://twitter.com/MathieuDutour/status/1134448154793914368)
 
 ## Usage
 
