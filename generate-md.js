@@ -291,8 +291,8 @@ module.exports.getMarkdownFromPost = async (
     }
 
     const frontmatter = `---
-title: "${metadata.title}"
-description: "${metadata.description}"
+title: ${JSON.stringify(metadata.title)}
+description: ${JSON.stringify(metadata.description)}
 date: "${metadata.date}"
 categories: ${
       metadata.categories
@@ -344,7 +344,7 @@ canonicalLink: ${metadata.canonicalLink}`
 
     await fs.writeFile(
       withOutputPath(profile, `./content/${slug}/index.md`),
-      `${frontmatter}${md}`
+      `${frontmatter}${md}\n`
     )
   } catch (err) {
     err.message = `Error parsing ${fileName}: ${err.message}`
