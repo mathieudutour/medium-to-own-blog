@@ -12,8 +12,8 @@ const configuration = {
   bio: `{{ bio }}`,
   author: '{{ authorName }}',
   githubUrl: '{{ githubURL }}',
-  // replace this by the url where your website will be published
-  siteUrl: 'http://localhost:8000',
+  // fallback option if NetlifyURL isnt provided
+  siteUrl: '{{ siteURL }}' || 'http://localhost:8000',
   social: {
     // leave the social media you do not want to appear as empty strings
     twitter: '{{ twitterUsername }}',

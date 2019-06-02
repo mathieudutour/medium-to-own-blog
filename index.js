@@ -193,12 +193,37 @@ and clicking on "Change site name".
 `)
     return inquirer.prompt([
       {
+        name: 'netlifyURL',
+        message: 'Enter Netlify URL',
+      },
+    ])
+  })
+  .then(({ netlifyURL }) => {
+    netlifyURL = netlifyURL.trim()
+
+    spinner.start('Updating the project to use Netlify URL')
+
+    return Promise.all([
+      fs
+        .readFile(withOutputPath(profile, './gatsby-config.js'), 'utf8')
+        .then(content =>
+          fs.writeFile(
+            withOutputPath(profile, './gatsby-config.js'),
+            content.replace(/{{ siteURL }}/g, netlifyURL || ''),
+            'utf8'
+          )
+        ),
+    ]).then(() => withOutputPath(profile))
+  })
+  .then(() => {
+    spinner.succeed('Updated the project to use the Netlify URL')
+    spinner.stop()
+    return inquirer.prompt([
+      {
         name: 'dontCare',
         message: 'Press enter when you are ready',
       },
     ])
-  })
-  .then(() => {
     // eslint-disable-next-line no-console
     console.log(`
     -------------------------
