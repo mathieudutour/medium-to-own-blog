@@ -205,6 +205,7 @@ module.exports.getMarkdownFromPost = async (
     let md = ''
 
     let slug
+    let redirect
 
     if (localDom.querySelector('.p-canonical')) {
       const canonicalLink = localDom
@@ -226,9 +227,9 @@ module.exports.getMarkdownFromPost = async (
       // some articles might not have a title
       const title = titleElement ? titleElement.textContent : ''
 
-      slug = title
-        ? slugify(title).toLowerCase()
-        : path.basename(decodeURI(canonicalLink))
+      redirect = path.basename(decodeURI(canonicalLink))
+
+      slug = title ? slugify(title).toLowerCase() : redirect
 
       // remove some extra stuff from the html
       if (titleElement) {
@@ -306,7 +307,13 @@ ${metadata.categories.map(c => `  - ${c}`).join('\n')}
 published: ${metadata.published ? 'true' : 'false'}${
       metadata.canonicalLink
         ? `
-canonicalLink: ${metadata.canonicalLink}`
+canonical_link: ${metadata.canonicalLink}`
+        : ''
+    }${
+      redirect
+        ? `
+redirect_from:
+  - /${redirect}`
         : ''
     }
 ---

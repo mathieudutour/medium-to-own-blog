@@ -77,6 +77,7 @@ module.exports = {
         path: `${__dirname}/content`,
       },
     },
+    'gatsby-plugin-netlify',
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
     {

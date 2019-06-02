@@ -19,7 +19,7 @@ export default function PageTemplate({ data: { mdx, site }, pageContext }) {
       <SEO
         title={mdx.frontmatter.title}
         description={mdx.frontmatter.description}
-        canonicalLink={mdx.frontmatter.canonicalLink}
+        canonicalLink={mdx.frontmatter.canonical_link}
         keywords={mdx.frontmatter.categories || []}
         meta={[
           {
@@ -121,7 +121,7 @@ export const pageQuery = graphql`
         description
         categories
         date(formatString: "MMMM DD, YYYY")
-        canonicalLink
+        canonical_link
       }
       code {
         body

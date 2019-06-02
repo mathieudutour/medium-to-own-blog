@@ -12,8 +12,9 @@ exports.sourceNodes = ({ actions }) => {
       description: String
       date: Date
       published: Boolean
-      canonicalLink: String
+      canonical_link: String
       categories: [String]
+      redirect_from: [String]
     }
   `
   createTypes(typeDefs)
@@ -39,7 +40,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 }
 
 exports.createPages = ({ graphql, actions, reporter, pathPrefix }) => {
-  const { createPage } = actions
+  const { createPage, createRedirect } = actions
   return graphql(
     `
       {
@@ -52,7 +53,7 @@ exports.createPages = ({ graphql, actions, reporter, pathPrefix }) => {
                 published
               }
               frontmatter {
-                title
+                redirect_from
               }
             }
           }
@@ -85,11 +86,28 @@ exports.createPages = ({ graphql, actions, reporter, pathPrefix }) => {
         next = null
       }
 
+      const pagePath = `${pathPrefix}${node.fields.slug}`
+
       createPage({
-        path: `${pathPrefix}${node.fields.slug}`,
+        path: pagePath,
         component: path.resolve(`./src/templates/blog-post.js`),
         context: { id: node.id, previous, next },
       })
+
+      if (
+        node.frontmatter &&
+        node.frontmatter.redirect_from &&
+        Array.isArray(node.frontmatter.redirect_from) &&
+        node.frontmatter.redirect_from.length
+      ) {
+        node.frontmatter.redirect_from.forEach(fromPath => {
+          createRedirect({
+            fromPath,
+            toPath: pagePath,
+            isPermanent: true,
+          })
+        })
+      }
     })
   })
 }
