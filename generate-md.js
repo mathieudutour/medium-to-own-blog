@@ -226,7 +226,9 @@ module.exports.getMarkdownFromPost = async (
       // some articles might not have a title
       const title = titleElement ? titleElement.textContent : ''
 
-      slug = title ? slugify(title).toLowerCase() : path.basename(canonicalLink)
+      slug = title
+        ? slugify(title).toLowerCase()
+        : path.basename(decodeURI(canonicalLink))
 
       // remove some extra stuff from the html
       if (titleElement) {
