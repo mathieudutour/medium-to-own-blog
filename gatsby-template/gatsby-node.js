@@ -1,6 +1,24 @@
 const path = require('path')
 const { createFilePath } = require('gatsby-source-filesystem')
 
+exports.sourceNodes = ({ actions }) => {
+  const { createTypes } = actions
+  const typeDefs = `
+    type Mdx implements Node {
+      frontmatter: Frontmatter
+    }
+    type Frontmatter {
+      title: String
+      description: String
+      date: Date
+      published: Boolean
+      canonicalLink: String
+      categories: [String]
+    }
+  `
+  createTypes(typeDefs)
+}
+
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
 
