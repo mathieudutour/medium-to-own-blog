@@ -215,12 +215,16 @@ module.exports.getMarkdownFromPost = async (
       const onlineContent = await request(canonicalLink)
       const onlineDom = new JSDOM(onlineContent).window.document
 
-      const tags = Array.from(onlineDom.querySelectorAll('.js-postTags li'))
-
-      if (tags.length === 0) {
-        // that's a comment
+      if (
+        onlineDom.querySelector('.postArticle--response') ||
+        !onlineDom.querySelector('.postArticle-content')
+      ) {
+        // that's a response to another article
+        // so we will ignore that
         return
       }
+
+      const tags = Array.from(onlineDom.querySelectorAll('.js-postTags li'))
 
       const titleElement = onlineDom.querySelector('.graf--title')
 
