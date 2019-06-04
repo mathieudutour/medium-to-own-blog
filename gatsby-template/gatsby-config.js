@@ -1,5 +1,3 @@
-const mdxFeed = require('gatsby-mdx/feed')
-
 const configuration = {
   // the name of your website
   title: '{{ authorName }}',
@@ -94,7 +92,49 @@ module.exports = {
     },
     {
       resolve: `gatsby-plugin-feed`,
-      options: mdxFeed,
+      options: {
+        feeds: [
+          {
+            serialize: ({ query: { site, allMdx } }) => {
+              return allMdx.edges.map(edge => {
+                return {
+                  ...edge.node.frontmatter,
+                  url: site.siteMetadata.siteUrl + edge.node.fields.slug,
+                  guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
+                  custom_elements: [{ 'content:encoded': edge.node.html }],
+                }
+              })
+            },
+            query: `
+            {
+              allMdx(
+                filter: { fields: { published: { eq: true } } }
+                limit: 1000,
+                sort: {
+                  order: DESC,
+                  fields: [frontmatter___date]
+                }
+              ) {
+                edges {
+                  node {
+                    frontmatter {
+                      title
+                      description
+                      date
+                    }
+                    fields {
+                      slug
+                    }
+                    html
+                  }
+                }
+              }
+            }
+          `,
+            output: `rss.xml`,
+          },
+        ],
+      },
     },
   ],
 }
