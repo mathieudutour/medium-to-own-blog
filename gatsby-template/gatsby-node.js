@@ -10,7 +10,7 @@ exports.sourceNodes = ({ actions }) => {
     type Frontmatter {
       title: String
       description: String
-      date: Date
+      date: Date @dateformat
       published: Boolean
       canonical_link: String
       categories: [String]
