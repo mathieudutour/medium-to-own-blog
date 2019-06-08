@@ -30,6 +30,7 @@ module.exports.addGatsbyFiles = profile => {
     copyTemplate('gatsby-node.js'),
     copyTemplate('gatsby-config.js'),
     copyTemplate('gatsby-browser.js'),
+    copyTemplate('Dockerfile'),
     copyTemplate('.travis.yml'),
     fs.writeFile(
       withOutputPath(profile, '.gitignore'),
@@ -105,6 +106,7 @@ yarn-error.log
 `
     ),
     copyTemplate('.eslintrc.yml'),
+    copyTemplate('.dockerignore'),
     fs.copy(
       path.join(__dirname, './gatsby-template/src'),
       withOutputPath(profile, './src')
