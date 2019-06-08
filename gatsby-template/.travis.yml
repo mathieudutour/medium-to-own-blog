@@ -17,4 +17,4 @@ jobs:
     - stage: Lighthouse
       if: type = pull_request
       install: npm ci
-      script: npm run lh --perf 90 --pwa 90 --a11y 90 --bp 90 --seo 90 "$(wait-for-netlify-preview)"
+      script: ./node_modules/.bin/lighthousebot --perf 90 --pwa 90 --a11y 90 --bp 90 --seo 90 "$(wait-for-netlify-preview)"
