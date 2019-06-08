@@ -5,10 +5,10 @@ const inquirer = require('inquirer')
 const ora = require('ora')
 const JSZip = require('jszip')
 const fs = require('fs-extra')
-const { getProfile } = require('./get-profile')
-const { getMarkdownFromPost } = require('./generate-md')
-const { addGatsbyFiles } = require('./add-gatsby-files')
-const { exec, withOutputPath } = require('./utils')
+const { getProfile } = require('../lib/get-profile')
+const { getMarkdownFromPost } = require('../lib/generate-md')
+const { addGatsbyFiles } = require('../lib/add-gatsby-files')
+const { exec, withOutputPath } = require('../lib/utils')
 
 // eslint-disable-next-line no-console
 console.log(`    -------------------------

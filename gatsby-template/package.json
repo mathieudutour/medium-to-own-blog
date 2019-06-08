@@ -64,7 +64,8 @@
     "lh": "lighthousebot",
     "start": "npm run dev",
     "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
+    "import-medium-article": "npx --package=medium-to-own-blog import-medium-article"
   },
   "prettier": {
     "proseWrap": "never",

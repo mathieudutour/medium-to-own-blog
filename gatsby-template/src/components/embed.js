@@ -3,7 +3,7 @@ import React, { useRef, useEffect } from 'react'
 
 import './embed.css'
 
-function Embed({ aspectRatio, src }) {
+function Embed({ aspectRatio, src, caption }) {
   const iframeRef = useRef(null)
 
   useEffect(() => {
@@ -29,7 +29,7 @@ function Embed({ aspectRatio, src }) {
 
   if (src && src.match(/^https:\/\/gist.github.com/)) {
     return (
-      <div className="embed-auto-height">
+      <div className="embed">
         <iframe
           id={src.replace('https://gist.github.com/', '')}
           ref={iframeRef}
@@ -37,20 +37,24 @@ function Embed({ aspectRatio, src }) {
           allowFullScreen
           frameBorder={0}
         />
+        {caption ? <figcaption>{caption}</figcaption> : null}
       </div>
     )
   }
 
   return (
     <div className="embed">
-      <img
-        aria-hidden
-        alt="image to preserve aspect ratio of the iframe"
-        src={`data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 ${(
-          100 * aspectRatio
-        ).toFixed(2)}'%3E%3C/svg%3E`}
-      />
-      <iframe src={src} allowFullScreen frameBorder={0} />
+      <div className="embed-container-sizing">
+        <img
+          aria-hidden
+          alt="image to preserve aspect ratio of the iframe"
+          src={`data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 ${(
+            100 * aspectRatio
+          ).toFixed(2)}'%3E%3C/svg%3E`}
+        />
+        <iframe src={src} allowFullScreen frameBorder={0} />
+      </div>
+      {caption ? <figcaption>{caption}</figcaption> : null}
     </div>
   )
 }

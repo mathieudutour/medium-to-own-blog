@@ -3,18 +3,14 @@
   "version": "0.1.12",
   "description": "Switch from Medium to your own blog in a few minutes",
   "bin": {
-    "medium-to-own-blog": "index.js"
+    "medium-to-own-blog": "bin/medium-to-own-blog.js",
+    "import-medium-article": "bin/import-medium-article.js"
   },
   "main": "index.js",
   "files": [
     "/gatsby-template",
-    "/add-gatsby-files.js",
-    "/default-icon.png",
-    "/generate-md.js",
-    "/get-profile.js",
-    "/index.js",
-    "/parse-profile.js",
-    "/utils.js"
+    "/bin",
+    "/lib"
   ],
   "scripts": {
     "test": "node ./index.js"
