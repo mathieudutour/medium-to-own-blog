@@ -31,6 +31,7 @@ module.exports.addGatsbyFiles = profile => {
     copyTemplate('gatsby-config.js'),
     copyTemplate('gatsby-browser.js'),
     copyTemplate('Dockerfile'),
+    copyTemplate('config.js'),
     copyTemplate('.travis.yml'),
     fs.writeFile(
       withOutputPath(profile, '.gitignore'),
