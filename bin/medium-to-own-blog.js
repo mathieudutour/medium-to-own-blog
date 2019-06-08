@@ -117,11 +117,12 @@ Happy writing!`)
 
     const remoteURL = repoURL
 
+    // handle if passed a git url
     if (repoURL.match(/^git@github.com:.*/i)) {
-      repoURL = repoURL
-        .replace(/^git@github.com:.*/i, 'https://github.com/')
-        .replace(/\.git$/i, '')
+      repoURL = repoURL.replace(/^git@github.com:.*/i, 'https://github.com/')
     }
+    // handle if passed url ending with .git (GitHub handle both seamlessly)
+    repoURL = repoURL.replace(/\.git$/i, '')
 
     return Promise.all([
       fs
