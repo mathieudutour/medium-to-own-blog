@@ -1,5 +1,16 @@
 # Guides
 
+## Working on your blog
+
+To work on your blog locally, run the following commands:
+
+```bash
+npm install
+npm start
+```
+
+You can then visit [http://localhost:8000/](http://localhost:8000/) to view the blog. Any edit made to the content of the blog will automatically be reflected there.
+
 ## Creating an article
 
 1. Create a new folder in the `content` folder. The name of the folder will be the url of the post.
