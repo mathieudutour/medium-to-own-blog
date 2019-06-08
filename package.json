@@ -13,7 +13,7 @@
     "/lib"
   ],
   "scripts": {
-    "test": "node ./index.js"
+    "test": "node ./bin/medium-to-own-blog.js"
   },
   "author": "Mathieu Dutour <mathieu@dutour.me>",
   "license": "MIT",
