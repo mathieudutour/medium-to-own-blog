@@ -34,6 +34,7 @@ There is no shortage of explanations behind exiting Medium. Here is a few select
 - Rich embeds using MDX
 - Easy deployment: Deploy on Netlify / Now.sh / Docker
 - SEO friendly
+- 100 points on the Performance, Accessibility, Best Practices, and SEO's [LightHouse tests](https://developers.google.com/web/tools/lighthouse/)
 
 ## :book: Documentation
 
