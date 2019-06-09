@@ -21,4 +21,5 @@ module.exports = {
     linkedin: '',
     instagram: '',
   },
+  trackingId: '{{ trackingID }}',
 }

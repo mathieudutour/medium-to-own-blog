@@ -269,18 +269,108 @@ https://github.com/mathieudutour/medium-to-own-blog/master/tree/master/docs.
 
 Happy blogging!
 ...
-
-
 `)
   })
-  .then(() => process.exit(0))
-  .catch(err => {
-    if (spinner) {
-      spinner.fail()
-    }
+  //added the code for google enabling google analytics
+  .then(() => {
     // eslint-disable-next-line no-console
-    console.log()
-    // eslint-disable-next-line no-console
-    console.error(err)
-    process.exit(1)
+    console.log(`
+      -------------------------
+
+You can track traffic coming on the blog by enabling 
+the google analytics with this project. 
+`)
+    return inquirer
+      .prompt([
+        {
+          name: 'isAnalytics',
+          message: 'Do you wish to enable google analytics ?',
+        },
+      ])
+      .then(({ isAnalytics }) => {
+        isAnalytics = isAnalytics.trim().toLowerCase()
+        if (isAnalytics === 'yes') {
+          console.log(`  
+
+You need to create google analytics account first 
+and get a tracking ID
+
+1. Head over to https://analytics.google.com/analytics/web
+2. Log with your google account to create analytics account
+3. You will be prompted with the form askin the URL of the website 
+   - Fill in the link you have created on the netlify
+   - Update time-zone & provercy settings according to your need 
+4. Click on the 'Get tracking ID' button
+      `)
+          return inquirer
+            .prompt([
+              {
+                name: 'analyticsID',
+                message: 'Provide your google analytics tracking ID ',
+              },
+            ])
+            .then(({ analyticsID }) => {
+              analyticsID = analyticsID.trim()
+              return fs
+                .readFile(withOutputPath(profile, './config.js'), 'utf8')
+                .then(content =>
+                  fs.writeFile(
+                    withOutputPath(profile, './config.js'),
+                    content.replace(/{{ trackingId }}/g, analyticsID),
+                    'utf8'
+                  )
+                )
+                .then(() =>
+                  exec(`git add . && git commit -m "adding google analytics"`, {
+                    cwd: withOutputPath(profile),
+                  })
+                )
+            })
+            .then(() => {
+              spinner.succeed('Updating the project to use the anlytics')
+              spinner.stop()
+
+              // eslint-disable-next-line no-console
+              console.log(
+                'Pushing the code for your blog to GitHub (you might be prompted for your GitHub identifiers)...\n'
+              )
+              return new Promise((resolve, reject) => {
+                const child = spawn('git', ['push', 'origin', 'master'], {
+                  cwd: withOutputPath(profile),
+                  stdio: 'inherit',
+                })
+
+                child.on('error', () => reject())
+                child.on('close', () => resolve())
+                child.on('exit', () => resolve())
+              })
+            })
+            .then(() => {
+              console.log(`  
+
+A new version of the site will be deployed soon...
+
+You can check the process here : https://app.netlify.com
+
+After succesful build, you will be able to see 
+various analytics related to your blog here : https://analytics.google.com
+              `)
+            })
+        } else {
+          // eslint-disable-next-line no-console
+          console.log(`
+Analytics not integrated...Happy hacking`)
+        }
+      })
+      .then(() => process.exit(0))
+      .catch(err => {
+        if (spinner) {
+          spinner.fail()
+        }
+        // eslint-disable-next-line no-console
+        console.log()
+        // eslint-disable-next-line no-console
+        console.error(err)
+        process.exit(1)
+      })
   })
