@@ -154,7 +154,7 @@ const Code = ({ codeString, language /* , ...props */ }) => {
   )
 }
 
-export const PrismjsReplacementInline = preProps => {
+export const PrismjsReplacement = preProps => {
   const props = preToCodeBlock(preProps)
   // if there's a codeString and some props, we passed the test
   if (props) {
