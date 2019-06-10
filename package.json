@@ -1,10 +1,10 @@
 {
   "name": "medium-to-own-blog",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Switch from Medium to your own blog in a few minutes",
   "bin": {
     "medium-to-own-blog": "bin/medium-to-own-blog.js",
-    "import-medium-article": "bin/import-medium-article.js"
+    "parse-medium-article": "bin/import-medium-article.js"
   },
   "main": "index.js",
   "files": [
