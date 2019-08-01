@@ -35,6 +35,16 @@ module.exports = {
           },
           'gatsby-remark-external-links',
         ],
+        plugins: [
+          {
+            resolve: 'gatsby-remark-images',
+            options: {
+              maxWidth: 700,
+              backgroundColor: 'transparent',
+              showCaptions: true,
+            },
+          },
+        ],
       },
     },
     {
