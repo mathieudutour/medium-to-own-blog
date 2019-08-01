@@ -6,6 +6,7 @@ exports.sourceNodes = ({ actions }) => {
   const typeDefs = `
     type Mdx implements Node {
       frontmatter: Frontmatter
+      fields: MdxFields
     }
     type Frontmatter {
       title: String
@@ -15,6 +16,10 @@ exports.sourceNodes = ({ actions }) => {
       canonical_link: String
       categories: [String]
       redirect_from: [String]
+    }
+    type MdxFields {
+      slug: String
+      published: Boolean
     }
   `
   createTypes(typeDefs)
