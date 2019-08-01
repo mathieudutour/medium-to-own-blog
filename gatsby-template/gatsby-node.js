@@ -59,6 +59,7 @@ exports.createPages = ({ graphql, actions, reporter, pathPrefix }) => {
               }
               frontmatter {
                 redirect_from
+                title
               }
             }
           }
