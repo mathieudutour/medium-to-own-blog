@@ -13,7 +13,7 @@ import './blog-listing.css'
 const BlogIndexPage = ({ data: { allMdx } }) => (
   <Layout>
     <SEO />
-    <Section centered>
+    <Section centered name="main-bio">
       <MainBio />
     </Section>
 

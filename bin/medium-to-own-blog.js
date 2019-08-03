@@ -260,7 +260,7 @@ We created a folder called "${profile.mediumUsername}-blog" with
 everything needed inside.
 
 Your blog posts are in the "content" sub-folder but the first thing
-you will want to edit is the "gatsby-config.js" file. It contains
+you will want to edit is the "config.js" file. It contains
 a few values like your bio or your social media links that you should edit.
 
 Every time you will push to the master branch on GitHub, your blog will be

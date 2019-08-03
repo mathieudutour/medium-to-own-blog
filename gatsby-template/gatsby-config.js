@@ -5,7 +5,7 @@ module.exports = {
   plugins: [
     'gatsby-plugin-react-helmet',
     {
-      resolve: 'gatsby-mdx',
+      resolve: 'gatsby-plugin-mdx',
       options: {
         extensions: ['.md', '.mdx'],
         gatsbyRemarkPlugins: [
@@ -34,6 +34,16 @@ module.exports = {
             },
           },
           'gatsby-remark-external-links',
+        ],
+        plugins: [
+          {
+            resolve: 'gatsby-remark-images',
+            options: {
+              maxWidth: 700,
+              backgroundColor: 'transparent',
+              showCaptions: true,
+            },
+          },
         ],
       },
     },
