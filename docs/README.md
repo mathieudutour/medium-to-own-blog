@@ -37,6 +37,10 @@ You can then visit [http://localhost:8000/](http://localhost:8000/) to view the 
    
 _Alternatively, you can add this file using the editor on GitHub.com which also has a Preview tab._
 
+## Using your own domain name on Netlify
+
+[https://css-tricks.com/using-your-domain-with-a-netlify-hosted-site/](https://css-tricks.com/using-your-domain-with-a-netlify-hosted-site/)
+
 ## Tasks
 
 - [ ] how to use git to publish the blog
