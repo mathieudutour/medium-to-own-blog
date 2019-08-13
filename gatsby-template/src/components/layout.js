@@ -1,11 +1,9 @@
-import React from "react"
-import PropTypes from "prop-types"
+import React from 'react'
+import PropTypes from 'prop-types'
 
-import "./layout.css"
+import './layout.css'
 
-const Layout = ({ children }) => (
-  <main>{children}</main>
-)
+const Layout = ({ children }) => <main>{children}</main>
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,

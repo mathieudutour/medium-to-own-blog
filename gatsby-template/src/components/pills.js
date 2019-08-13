@@ -1,10 +1,10 @@
-import React from "react"
-import { capitalize } from "../utils/string"
+import React from 'react'
+import { capitalize } from '../utils/string'
 
-import "./pills.css"
+import './pills.css'
 
 function cssSafe(str) {
-  return encodeURIComponent(str.toLowerCase()).replace(/%[0-9A-F]{2}/gi, "")
+  return encodeURIComponent(str.toLowerCase()).replace(/%[0-9A-F]{2}/gi, '')
 }
 
 const Pills = ({ items }) => {
