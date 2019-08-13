@@ -23,6 +23,11 @@
   fill: #7dffb3;
 }
 
+.main-bio .h-card {
+  text-decoration: none;
+  letter-spacing: 0;
+}
+
 @media (max-width: 1024px) {
   .main-bio-container {
     flex-wrap: wrap;
