@@ -1,7 +1,7 @@
 const path = require('path')
 const { createFilePath } = require('gatsby-source-filesystem')
 
-exports.sourceNodes = ({ actions }) => {
+exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions
   const typeDefs = `
     type Mdx implements Node {
