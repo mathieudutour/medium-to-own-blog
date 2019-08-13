@@ -11,8 +11,7 @@ import { formatPostDate, formatReadingTime } from '../utils/dates'
 import './blog-post.css'
 
 export default function PageTemplate({ data: { mdx, site }, pageContext }) {
-  const { previous, next } = pageContext
-  const publicUrl = `${site.siteMetadata.siteUrl}${mdx.fields.slug}`
+  const { previous, next, permalink } = pageContext
 
   return (
     <div>
@@ -52,7 +51,7 @@ export default function PageTemplate({ data: { mdx, site }, pageContext }) {
             <a
               target="_blank"
               rel="nofollow noopener noreferrer"
-              href={`https://twitter.com/search?q=${publicUrl}`}
+              href={`https://twitter.com/search?q=${permalink}`}
             >
               Discuss on Twitter
             </a>{' '}
@@ -60,9 +59,7 @@ export default function PageTemplate({ data: { mdx, site }, pageContext }) {
             <a
               target="_blank"
               rel="nofollow noopener noreferrer"
-              href={`${site.siteMetadata.githubUrl}/edit/master/content${
-                mdx.fields.slug
-              }index.md`}
+              href={`${site.siteMetadata.githubUrl}/edit/master/content${mdx.fields.slug}index.md`}
             >
               Edit this post on GitHub
             </a>

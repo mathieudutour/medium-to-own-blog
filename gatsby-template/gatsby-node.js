@@ -49,6 +49,11 @@ exports.createPages = ({ graphql, actions, reporter, pathPrefix }) => {
   return graphql(
     `
       {
+        site {
+          siteMetadata {
+            siteUrl
+          }
+        }
         allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
           edges {
             node {
@@ -93,11 +98,12 @@ exports.createPages = ({ graphql, actions, reporter, pathPrefix }) => {
       }
 
       const pagePath = `${pathPrefix}${node.fields.slug}`
+      const permalink = `${result.data.site.siteMetadata.siteUrl}${node.fields.slug}`
 
       createPage({
         path: pagePath,
         component: path.resolve(`./src/templates/blog-post.js`),
-        context: { id: node.id, previous, next },
+        context: { id: node.id, previous, next, permalink },
       })
 
       if (
