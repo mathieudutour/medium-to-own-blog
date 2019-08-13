@@ -1,8 +1,20 @@
 /**
- * SEO component that queries for data with
- *  Gatsby's useStaticQuery React hook
+ * This react helmt code is adapted from
+ * https://themeteorchef.com/tutorials/reusable-seo-with-react-helmet.
  *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
+ * A great tutorial explaining how to setup a robust version of an
+ * SEO friendly react-helmet instance.
+ *
+ *
+ * Use the Helmt on pages to generate SEO and meta content!
+ *
+ * Usage:
+ * <SEO
+ *   title={title}
+ *   description={description}
+ *   image={image}
+ * />
+ *
  */
 
 import React from 'react'
