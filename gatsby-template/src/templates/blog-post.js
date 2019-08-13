@@ -17,7 +17,7 @@ export default function PageTemplate({ data: { mdx, site }, pageContext }) {
     <div>
       <SEO
         title={mdx.frontmatter.title}
-        description={mdx.frontmatter.description}
+        description={mdx.frontmatter.description || mdx.excerpt}
         canonicalLink={mdx.frontmatter.canonical_link}
         keywords={mdx.frontmatter.categories || []}
         meta={[
@@ -112,6 +112,7 @@ export const pageQuery = graphql`
       fields {
         slug
       }
+      excerpt
       timeToRead
       frontmatter {
         title
