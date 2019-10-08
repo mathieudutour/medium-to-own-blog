@@ -56,3 +56,10 @@ This project is only possible thanks to the awesomeness of the following project
 ## :tm: License
 
 MIT
+
+## Migration Troubleshooting
+
+Since everyone has different content in their Medium blogs, you might encounter some issues that can't be fixed in a standardized way or aren't worth trying. These issues and potential workarounds will be posted below:
+
+- **JSX closing tag parsing error** - [Issue #56](https://github.com/mathieudutour/medium-to-own-blog/issues/56). You may have some self-closing, void tags in your blog posts. JSX requires all tags to be self-closed so even though the HTML break tag can be written as `<br>`, you will need to change the syntax to read `<br/>` or go back later after running the migration and place the tags in a code block.
+- **GitHub authentication errors** - [Issue #54](https://github.com/mathieudutour/medium-to-own-blog/issues/54). GitHub allows users to set up authentication several different ways. For instance, if you have two-factor authentication enabled, you have to provide a token in certain cases when cloning down repositories. Please check your authentication settings if you experience any issues related to authentication failures.
