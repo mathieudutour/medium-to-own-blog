@@ -92,7 +92,7 @@ Now let's work on putting it online.
 GitHub is a free platform to host code online.
 
 1. Head over https://github.com/new and create a new repository. 
-   Don't initialize a license or readme or you will encounter issues in the next step.
+   Do NOT create it with a license or readme - otherwise issues  will arise later.
 2. Copy paste the URL of your new repository here
 `)
     return inquirer.prompt([
