@@ -142,6 +142,7 @@ module.exports = themeOptions => {
         token: options.webmentionsToken,
       },
     },
+    `gatsby-plugin-netlify-cms`,
   ]
 
   return { plugins }

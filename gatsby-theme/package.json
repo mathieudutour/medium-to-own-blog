@@ -22,6 +22,7 @@
     "gatsby-plugin-manifest": "^2.1.1",
     "gatsby-plugin-mdx": "^1.0.19",
     "gatsby-plugin-netlify": "^2.0.17",
+    "gatsby-plugin-netlify-cms": "^4.1.41",
     "gatsby-plugin-offline": "^3.0.40",
     "gatsby-plugin-react-helmet": "^3.0.12",
     "gatsby-plugin-sharp": "^2.0.36",
@@ -35,6 +36,7 @@
     "gatsby-remark-smartypants": "^2.0.9",
     "gatsby-source-filesystem": "^2.0.33",
     "gatsby-transformer-sharp": "^2.1.19",
+    "netlify-cms-app": "^2.11.29",
     "prism-react-renderer": "^1.0.2",
     "prop-types": "^15.7.2",
     "react-helmet": "^5.2.1"

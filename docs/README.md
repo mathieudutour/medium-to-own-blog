@@ -34,7 +34,7 @@ You can then visit [http://localhost:8000/](http://localhost:8000/) to view the 
 4. All content after the `---` will be treated as the article body. You can edit the content in different ways:
    1. Use any text editor to write markdown.
    2. Use this medium-like editor [tool](https://ionicabizau.github.io/medium-editor-markdown/example/) to generate the markdown for you and then copy/paste the markdown into the file.
-   
+
 _Alternatively, you can add this file using the editor on GitHub.com which also has a Preview tab._
 
 ## Using your own domain name on Netlify

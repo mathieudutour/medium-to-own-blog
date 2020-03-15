@@ -1,0 +1,45 @@
+backend:
+  name: git-gateway
+  branch: master
+publish_mode: editorial_workflow
+media_folder: static/media
+public_folder: /media
+collections:
+  - name: 'blog'
+    label: 'Blog'
+    folder: 'content'
+    create: true
+    path: '{{slug}}/index'
+    media_folder: ''
+    public_folder: ''
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - {
+          label: 'Description',
+          name: 'description',
+          widget: 'string',
+          required: false,
+        }
+      - { label: 'Publish Date', name: 'date', widget: 'datetime' }
+      - { label: 'Published', name: 'published', widget: 'boolean' }
+      - {
+          label: 'Categories',
+          name: 'categories',
+          widget: 'list',
+          collapsed: false,
+          field: { label: 'Category', name: 'category', widget: 'string' },
+        }
+      - {
+          label: 'Canonical Link',
+          name: 'canonical_link',
+          widget: 'string',
+          required: false,
+        }
+      - {
+          label: 'Redirect From',
+          name: 'redirect_from',
+          widget: 'list',
+          collapsed: false,
+          field: { label: 'Redirect', name: 'redirect', widget: 'string' },
+        }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
