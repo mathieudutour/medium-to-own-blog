@@ -1,6 +1,6 @@
 {
   "name": "medium-to-own-blog",
-  "version": "0.4.0",
+  "version": "0.4.3",
   "description": "Switch from Medium to your own blog in a few minutes",
   "bin": {
     "medium-to-own-blog": "bin/medium-to-own-blog.js",

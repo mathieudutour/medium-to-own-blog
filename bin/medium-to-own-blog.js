@@ -73,6 +73,10 @@ inquirer
     }, Promise.resolve())
   })
   .then(() => {
+    console.warn(`
+
+⚠️  Due to recent changes in Medium, we cannot access the posts' categories. You might want to touch them up manually.
+    `)
     spinner.succeed('Parsed the Medium posts')
     spinner.start('Preparing the Gatsby project')
 
