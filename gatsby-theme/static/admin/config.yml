@@ -21,7 +21,12 @@ collections:
           required: false,
         }
       - { label: 'Publish Date', name: 'date', widget: 'datetime' }
-      - { label: 'Published', name: 'published', widget: 'boolean' }
+      - {
+          label: 'Published',
+          name: 'published',
+          widget: 'boolean',
+          required: false,
+        }
       - {
           label: 'Categories',
           name: 'categories',
