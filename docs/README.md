@@ -34,7 +34,7 @@ export default {
 
 > This feature allows users to override a component in order to customize its rendering.
 >
-> Component Shadowing lets you replace the theme’s original file, gatsby-theme-medium-to-own-blog/src/components/bio.js, with your own to implement any changes you need.
+> Component Shadowing lets you replace the theme’s original file, gatsby-theme-medium-to-own-blog/src/components/bio.js for example, with your own to implement any changes you need.
 
 Any component or section is able to be replaced with your own custom component.
 
