@@ -1,9 +1,8 @@
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import Image from 'gatsby-image'
-
-import './main-bio.css'
-import './webmention.css'
+import Styled from '@emotion/styled'
+import theme from '../../theme'
 
 const socialURLs = {
   twitter: 'https://twitter.com',
@@ -47,6 +46,76 @@ const socialIcons = {
   ),
 }
 
+const Container = Styled.div`
+  display: flex;
+  margin-top: 10em;
+  margin-bottom: 4.375rem;
+
+  @media (max-width: 1024px) {
+    flex-wrap: wrap;
+    margin-top: 4.5em;
+  }
+`
+
+const Title = Styled.h1`
+  margin-bottom: 0.875rem;
+  margin-top: 0;
+`
+
+const SocialLinks = Styled.ul`
+  margin-bottom: 0.875rem;
+
+  list-style-type: none;
+  margin-bottom: 0;
+  padding-left: 0;
+
+  & > li {
+    display: inline-block;
+    margin-right: 1.5rem;
+    margin-bottom: 0;
+  }
+
+  & > li:last-child {
+    margin-right: 0;
+  }
+
+  & svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  & svg path {
+    fill: ${theme.colors.grey};
+  }
+
+  & svg:hover path {
+    fill: ${theme.colors.primary};
+  }
+`
+
+const Wrapper = Styled.div`
+  flex: 0 0 80%;
+  margin-right: 1.5rem;
+
+  @media (max-width: 1024px) {
+    order: 1;
+    flex: 0 0 100%;
+    margin-right: 0;
+  }
+`
+
+const WebmentionLink = Styled.a`
+  text-decoration: none;
+  letter-spacing: 0;
+`
+
+const Avatar = Styled(Image)`
+  margin-bottom: 0;
+  min-width: 150px
+  border-radius: 100%;
+  border: 8px solid ${theme.colors.primary};
+`
+
 function Bio() {
   const { site, avatar } = useStaticQuery(
     graphql`
@@ -84,24 +153,18 @@ function Bio() {
   const { author, social, bio, siteUrl } = site.siteMetadata
 
   return (
-    <div
-      className="main-bio-container"
-      style={{
-        marginBottom: '4.375rem',
-      }}
-    >
-      <div className="main-bio">
-        <a className="h-card" rel="me" href={siteUrl}>
-          <h1 style={{ marginBottom: '0.875rem' }}>{author}</h1>
-        </a>
-        <ul className="horizontal-links" style={{ marginBottom: '0.875rem' }}>
+    <Container>
+      <Wrapper>
+        <WebmentionLink className="h-card" rel="me" href={siteUrl}>
+          <Title>{author}</Title>
+        </WebmentionLink>
+        <SocialLinks>
           {Object.keys(social).map(s =>
             social[s] ? (
               <li key={s}>
                 <a
                   rel="me"
                   aria-label={`${s} profile`}
-                  className="u-no-box-shadow"
                   href={`${socialURLs[s]}/${social[s]}`}
                 >
                   {socialIcons[s]}
@@ -109,9 +172,9 @@ function Bio() {
               </li>
             ) : null
           )}
-        </ul>
+        </SocialLinks>
         <p>{bio}</p>
-      </div>
+      </Wrapper>
       <Image
         className="avatar"
         fixed={avatar.childImageSharp.fixed}
@@ -126,7 +189,7 @@ function Bio() {
           borderRadius: '50%',
         }}
       />
-    </div>
+    </Container>
   )
 }
 

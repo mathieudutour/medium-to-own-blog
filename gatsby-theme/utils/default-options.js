@@ -1,12 +1,12 @@
 module.exports = themeOptions => {
-  const basePath = themeOptions.basePath || `/`
+  const pathPrefix = themeOptions.pathPrefix || ``
   const contentPath = themeOptions.contentPath || `content`
   const imagesPath = themeOptions.imagesPath || `src/images`
 
   const config = themeOptions.config || {}
 
   return {
-    basePath,
+    pathPrefix,
     contentPath,
     imagesPath,
     config,

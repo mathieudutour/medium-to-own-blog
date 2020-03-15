@@ -1,21 +1,28 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import Styled from '@emotion/styled'
 
-import './section.css'
+const Wrapper = Styled.section`
+  ${props =>
+    props.centered
+      ? `display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;`
+      : ''}
+`
+
+const Container = Styled.div`
+  max-width: ${props => (props.big ? '960px' : '700px')};
+  margin: 0 auto;
+  width: 80%;
+`
 
 const Section = ({ name, centered, children, big }) => {
   return (
-    <section id={name} className={centered ? 'center' : ''}>
-      <div className={`${big ? '' : 'container small'}`}>{children}</div>
-    </section>
+    <Wrapper id={name} centered={centered}>
+      <Container>{children}</Container>
+    </Wrapper>
   )
-}
-
-Section.propTypes = {
-  name: PropTypes.string.isRequired,
-  centered: PropTypes.bool,
-  big: PropTypes.bool,
-  children: PropTypes.node.isRequired,
 }
 
 export default Section

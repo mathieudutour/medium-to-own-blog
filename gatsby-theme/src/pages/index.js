@@ -1,5 +1,6 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
+import Styled from '@emotion/styled'
 
 import Layout from '../components/layout'
 import SEO from '../components/seo'
@@ -8,7 +9,20 @@ import Pills from '../components/pills'
 import MainBio from '../components/main-bio'
 import { formatPostDate, formatReadingTime } from '../utils/dates'
 
-import './blog-listing.css'
+const BlogListing = Styled(Link)`
+  display: block;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  text-decoration: none;
+
+  & p {
+    margin-top: 1rem;
+  }
+
+  & h1 {
+    margin-bottom: 1rem;
+  }
+`
 
 const BlogIndexPage = ({ data: { allMdx } }) => (
   <Layout>
@@ -19,7 +33,7 @@ const BlogIndexPage = ({ data: { allMdx } }) => (
 
     {allMdx.nodes.map(post => (
       <Section key={post.fields.slug} name={post.fields.slug} centered>
-        <Link to={post.fields.slug} className="blog-listing">
+        <BlogListing to={post.fields.slug}>
           <h1>{post.frontmatter.title}</h1>
           <p>
             {formatPostDate(post.frontmatter.date)}
@@ -27,7 +41,7 @@ const BlogIndexPage = ({ data: { allMdx } }) => (
           </p>
           <Pills items={post.frontmatter.categories} />
           <p>{post.frontmatter.description}</p>
-        </Link>
+        </BlogListing>
       </Section>
     ))}
   </Layout>

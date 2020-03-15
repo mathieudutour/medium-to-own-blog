@@ -1,49 +1,97 @@
 import React, { useState } from 'react'
+import Styled from '@emotion/styled'
 
 import { formatPostDate } from '../utils/dates'
+import theme from '../../theme'
 
-import './responses.css'
+const AvatarWrapper = Styled.div`
+  display: flex;
+  margin-bottom: 1rem;
+`
+
+const AvatarImage = Styled.img`
+  height: 36px;
+  width: 36px;
+  margin-right: 0.875rem;
+  margin-bottom: 0;
+  border-radius: 100%;
+`
+
+const Time = Styled.time`
+  margin: 0;
+  font-size: 15px;
+  color: ${theme.colors.grey};
+`
+
+const AuthorNameWrapper = Styled.p`
+  margin: 0;
+  line-height: 0.6px;
+`
+
+const AuthorName = Styled.a`
+  font-size: 16px;
+  text-decoration: none;
+  line-height: 0;
+  color: ${theme.colors.text};
+`
 
 function Avatar({ author, published }) {
   return (
-    <div
-      style={{
-        display: 'flex',
-        marginBottom: '1rem',
-      }}
-    >
-      <img
-        src={author.photo}
-        alt={author.name}
-        style={{
-          height: 36,
-          width: 36,
-          marginRight: '0.875rem',
-          marginBottom: 0,
-          borderRadius: '100%',
-        }}
-      />
+    <AvatarWrapper>
+      <AvatarImage src={author.photo} alt={author.name} />
       <div>
-        <p style={{ margin: 0, lineHeight: 0.6 }}>
-          <a
+        <AuthorNameWrapper>
+          <AuthorName
             target="_blank"
             rel="nofollow noopener noreferrer"
-            style={{ fontSize: 16, textDecoration: 'none', lineHeight: 0 }}
             href={author.url}
           >
             {author.name}
-          </a>
-        </p>
-        <time
-          style={{ margin: 0, fontSize: 15, color: 'rgba(0, 0, 0, 0.54)' }}
-          dateTime={published}
-        >
-          {formatPostDate(published)}
-        </time>
+          </AuthorName>
+        </AuthorNameWrapper>
+        <Time dateTime={published}>{formatPostDate(published)}</Time>
       </div>
-    </div>
+    </AvatarWrapper>
   )
 }
+
+const ShowReponses = Styled.button`
+  cursor: pointer;
+  width: 100%;
+  color: rgba(0, 0, 0, 0.84);
+  border: 1px solid lavender;
+  border-radius: 3px;
+  padding: 20px;
+  text-align: center;
+  font-size: 14px;
+`
+
+const Wrapper = Styled.ul`
+  list-style: none;
+  padding: 0;
+
+  & li {
+    box-shadow: ${theme.shadows.box};
+    border: 1px solid ${theme.colors.boxBorder};
+    padding: 15px 20px;
+  }
+
+  & li + li {
+    margin-top: 1.5rem;
+  }
+`
+
+const VideoContent = Styled.div`
+  text-align: center;
+
+  & video {
+    max-width: 100%;
+  }
+`
+
+const ResponseLink = Styled.a`
+  text-decoration: none;
+`
 
 function Responses({ responses }) {
   const [showingResponses, setShowingResponses] = useState(false)
@@ -54,29 +102,24 @@ function Responses({ responses }) {
 
   if (!showingResponses) {
     return (
-      <button
-        type="button"
-        onClick={() => setShowingResponses(true)}
-        className="show-responses"
-      >
+      <ShowReponses type="button" onClick={() => setShowingResponses(true)}>
         See {responses.length} response{responses.length > 1 ? 's' : ''}
-      </button>
+      </ShowReponses>
     )
   }
 
   return (
-    <ul className="responses">
+    <Wrapper>
       {responses.map(response => (
         <li>
-          <a
+          <ResponseLink
             target="_blank"
             rel="nofollow noopener noreferrer"
-            style={{ textDecoration: 'none' }}
             href={response.url}
           >
             <Avatar author={response.author} published={response.wmReceived} />
             <div>{response.content && response.content.text}</div>
-            <div className="video-content">
+            <VideoContent>
               {response.video && response.video.length
                 ? response.video.map(v => (
                     <video controls muted autoPlay loop>
@@ -88,11 +131,11 @@ function Responses({ responses }) {
                     </video>
                   ))
                 : null}
-            </div>
-          </a>
+            </VideoContent>
+          </ResponseLink>
         </li>
       ))}
-    </ul>
+    </Wrapper>
   )
 }
 

@@ -1,6 +1,19 @@
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import Image from 'gatsby-image'
+import Styled from '@emotion/styled'
+
+const Wrapper = Styled.div`
+  display: flex;
+  margin-bottom: 4.375rem;
+`
+
+const StyledImage = Styled(Image)`
+  margin-right: 0.875rem;
+  margin-bottom: 0;
+  min-width: 50px;
+  border-radius: 100%;
+`
 
 function Bio() {
   const { site, avatar } = useStaticQuery(
@@ -33,21 +46,10 @@ function Bio() {
   const { author, social, shortBio } = site.siteMetadata
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        marginBottom: '4.375rem',
-      }}
-    >
-      <Image
+    <Wrapper>
+      <StyledImage
         fixed={avatar.childImageSharp.fixed}
         alt={author}
-        style={{
-          marginRight: '0.875rem',
-          marginBottom: 0,
-          minWidth: 50,
-          borderRadius: '100%',
-        }}
         imgStyle={{
           borderRadius: '50%',
         }}
@@ -61,7 +63,7 @@ function Bio() {
           </a>
         ) : null}
       </p>
-    </div>
+    </Wrapper>
   )
 }
 

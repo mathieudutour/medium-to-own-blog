@@ -145,5 +145,5 @@ module.exports = themeOptions => {
     `gatsby-plugin-netlify-cms`,
   ]
 
-  return { plugins }
+  return { plugins, pathPrefix: options.pathPrefix }
 }

@@ -1,24 +1,4 @@
-/**
- * This react helmt code is adapted from
- * https://themeteorchef.com/tutorials/reusable-seo-with-react-helmet.
- *
- * A great tutorial explaining how to setup a robust version of an
- * SEO friendly react-helmet instance.
- *
- *
- * Use the Helmt on pages to generate SEO and meta content!
- *
- * Usage:
- * <SEO
- *   title={title}
- *   description={description}
- *   image={image}
- * />
- *
- */
-
 import React from 'react'
-import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
 
@@ -151,16 +131,6 @@ SEO.defaultProps = {
   meta: [],
   keywords: [],
   description: ``,
-}
-
-SEO.propTypes = {
-  description: PropTypes.string,
-  lang: PropTypes.string,
-  meta: PropTypes.arrayOf(PropTypes.object),
-  keywords: PropTypes.arrayOf(PropTypes.string),
-  title: PropTypes.string,
-  canonicalLink: PropTypes.string,
-  image: PropTypes.string,
 }
 
 export default SEO

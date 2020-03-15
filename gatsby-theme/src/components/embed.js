@@ -1,7 +1,24 @@
 /* eslint-disable jsx-a11y/iframe-has-title */
 import React, { useRef, useEffect } from 'react'
+import Styled from '@emotion/styled'
 
-import './embed.css'
+const Container = Styled.div`
+  position: relative;
+`
+
+const ImageForRatio = Styled.img`
+  display: block;
+  height: auto;
+  width: 100%;
+`
+
+const IframeWithRatio = Styled.iframe`
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+`
 
 function Embed({ aspectRatio, src, caption }) {
   const iframeRef = useRef(null)
@@ -29,7 +46,7 @@ function Embed({ aspectRatio, src, caption }) {
 
   if (src && src.match(/^https:\/\/gist.github.com/)) {
     return (
-      <div className="embed">
+      <div>
         <iframe
           id={src.replace('https://gist.github.com/', '')}
           ref={iframeRef}
@@ -43,17 +60,17 @@ function Embed({ aspectRatio, src, caption }) {
   }
 
   return (
-    <div className="embed">
-      <div className="embed-container-sizing">
-        <img
+    <div>
+      <Container>
+        <ImageForRatio
           aria-hidden
           alt="image to preserve aspect ratio of the iframe"
           src={`data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 ${(
             100 * aspectRatio
           ).toFixed(2)}'%3E%3C/svg%3E`}
         />
-        <iframe src={src} allowFullScreen frameBorder={0} />
-      </div>
+        <IframeWithRatio src={src} allowFullScreen frameBorder={0} />
+      </Container>
       {caption ? <figcaption>{caption}</figcaption> : null}
     </div>
   )

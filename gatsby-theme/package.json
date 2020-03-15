@@ -1,7 +1,7 @@
 {
   "name": "gatsby-theme-medium-to-own-blog",
   "description": "Gatsby theme for Medium-to-own-blog",
-  "version": "0.1.0",
+  "version": "0.2.1",
   "author": "Mathieu Dutour <mathieu@dutour.me>",
   "repository": {
     "type": "git",
@@ -14,10 +14,13 @@
     "react-dom": "^16.8.6"
   },
   "dependencies": {
+    "@emotion/core": "^10.0.28",
+    "@emotion/styled": "^10.0.27",
     "@mdx-js/mdx": "^1.0.16",
     "@mdx-js/react": "^1.0.16",
     "@weknow/gatsby-remark-twitter": "^0.2.1",
     "gatsby-image": "^2.1.1",
+    "gatsby-plugin-emotion": "^4.1.24",
     "gatsby-plugin-feed": "^2.2.1",
     "gatsby-plugin-manifest": "^2.1.1",
     "gatsby-plugin-mdx": "^1.0.19",
@@ -38,7 +41,6 @@
     "gatsby-transformer-sharp": "^2.1.19",
     "netlify-cms-app": "^2.11.29",
     "prism-react-renderer": "^1.0.2",
-    "prop-types": "^15.7.2",
     "react-helmet": "^5.2.1"
   },
   "devDependencies": {},
