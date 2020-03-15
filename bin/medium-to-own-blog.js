@@ -91,7 +91,7 @@ Now let's work on putting it online.
 
 GitHub is a free platform to host code online.
 
-1. Head over https://github.com/new and create a new repository. 
+1. Head over https://github.com/new and create a new repository.
    Do NOT create it with a license or readme - otherwise issues will arise later.
 2. Copy paste the URL of your new repository here
 `)
@@ -264,8 +264,7 @@ Your blog posts are in the "content" sub-folder but the first thing
 you will want to edit is the "config.js" file. It contains
 a few values like your bio or your social media links that you should edit.
 
-Every time you will push to the master branch on GitHub, your blog will be
-deployed. If that sentence doesn't make sense to you, you can check the guides on
+For more information, you can check the guides on
 https://github.com/mathieudutour/medium-to-own-blog/master/tree/master/docs.
 
 Happy blogging!

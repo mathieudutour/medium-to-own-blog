@@ -6,12 +6,21 @@ import SEO from '../components/seo'
 import Pills from '../components/pills'
 import Bio from '../components/bio'
 import Embed from '../components/embed'
+import Responses from '../components/responses'
 import { formatPostDate, formatReadingTime } from '../utils/dates'
 
 import './blog-post.css'
 
-export default function PageTemplate({ data: { mdx, site }, pageContext }) {
+export default function PageTemplate({
+  data: { mdx, site, allWebMentionEntry },
+  pageContext,
+}) {
   const { previous, next, permalink } = pageContext
+
+  const webmentions = (allWebMentionEntry || {}).nodes || []
+
+  const likes = webmentions.filter(x => x.wmProperty === 'like-of')
+  const responses = webmentions.filter(x => x.wmProperty === 'in-reply-to')
 
   return (
     <div>
@@ -47,6 +56,17 @@ export default function PageTemplate({ data: { mdx, site }, pageContext }) {
           <MDXRenderer scope={{ Embed }}>{mdx.body}</MDXRenderer>
         </article>
         <footer className="container small">
+          <a
+            className="footer-likes"
+            target="_blank"
+            rel="nofollow noopener noreferrer"
+            href={`https://twitter.com/search?q=${permalink}`}
+          >
+            ♡{' '}
+            {likes.length
+              ? `${likes.length} like${likes.length > 1 ? 's' : ''}`
+              : 'Like'}
+          </a>
           <small>
             <a
               target="_blank"
@@ -70,6 +90,21 @@ export default function PageTemplate({ data: { mdx, site }, pageContext }) {
             }}
           />
           <Bio />
+          <hr
+            style={{
+              margin: `24px 0`,
+            }}
+          />
+          {responses.length ? (
+            <div>
+              <Responses responses={responses} />
+              <hr
+                style={{
+                  margin: `24px 0`,
+                }}
+              />
+            </div>
+          ) : null}
           <ul
             style={{
               display: `flex`,
@@ -125,3 +160,46 @@ export const pageQuery = graphql`
     }
   }
 `
+
+// export const pageQuery = graphql`
+//   query BlogPostQuery($id: String, $permalink: String) {
+//     site {
+//       siteMetadata {
+//         siteUrl
+//         githubUrl
+//       }
+//     }
+//     mdx(id: { eq: $id }) {
+//       fields {
+//         slug
+//       }
+//       excerpt
+//       timeToRead
+//       frontmatter {
+//         title
+//         description
+//         categories
+//         date(formatString: "MMMM DD, YYYY")
+//         canonical_link
+//       }
+//       body
+//     }
+//     allWebMentionEntry(filter: { wmTarget: { eq: $permalink } }) {
+//       nodes {
+//         wmProperty
+//         wmId
+//         url
+//         wmReceived
+//         author {
+//           url
+//           photo
+//           name
+//         }
+//         content {
+//           text
+//         }
+//         video
+//       }
+//     }
+//   }
+// `

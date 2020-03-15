@@ -25,7 +25,7 @@ function Embed({ aspectRatio, src, caption }) {
     doc.open()
     doc.writeln(iframeHtml)
     doc.close()
-  }, [iframeRef])
+  }, [iframeRef, src])
 
   if (src && src.match(/^https:\/\/gist.github.com/)) {
     return (

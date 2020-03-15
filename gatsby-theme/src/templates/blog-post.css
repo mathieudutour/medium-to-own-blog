@@ -31,3 +31,15 @@
 .blog footer small a {
   font-size: 17px;
 }
+
+.blog hr {
+  border: 0;
+  background: rgba(0, 0, 0, 0.1);
+  height: 1px;
+}
+
+.blog .footer-likes {
+  float: right;
+  text-decoration: none;
+  margin-top: 0;
+}

@@ -1,0 +1,55 @@
+{
+  "name": "gatsby-theme-medium-to-own-blog",
+  "description": "Gatsby theme for Medium-to-own-blog",
+  "version": "0.1.0",
+  "author": "Mathieu Dutour <mathieu@dutour.me>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mathieudutour/medium-to-own-blog.git",
+    "directory": "gatsby-theme"
+  },
+  "peerDependencies": {
+    "gatsby": "^2.13.13",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "dependencies": {
+    "@mdx-js/mdx": "^1.0.16",
+    "@mdx-js/react": "^1.0.16",
+    "@weknow/gatsby-remark-twitter": "^0.2.1",
+    "gatsby-image": "^2.1.1",
+    "gatsby-plugin-feed": "^2.2.1",
+    "gatsby-plugin-manifest": "^2.1.1",
+    "gatsby-plugin-mdx": "^1.0.19",
+    "gatsby-plugin-netlify": "^2.0.17",
+    "gatsby-plugin-offline": "^3.0.40",
+    "gatsby-plugin-react-helmet": "^3.0.12",
+    "gatsby-plugin-sharp": "^2.0.36",
+    "gatsby-plugin-webmention": "^0.2.0",
+    "gatsby-remark-autolink-headers": "^2.0.16",
+    "gatsby-remark-copy-linked-files": "^2.0.12",
+    "gatsby-remark-embed-video": "^2.0.1",
+    "gatsby-remark-external-links": "^0.0.4",
+    "gatsby-remark-images": "^3.0.11",
+    "gatsby-remark-responsive-iframe": "^2.1.1",
+    "gatsby-remark-smartypants": "^2.0.9",
+    "gatsby-source-filesystem": "^2.0.33",
+    "gatsby-transformer-sharp": "^2.1.19",
+    "prism-react-renderer": "^1.0.2",
+    "prop-types": "^15.7.2",
+    "react-helmet": "^5.2.1"
+  },
+  "devDependencies": {},
+  "keywords": [
+    "gatsby",
+    "medium",
+    "blog"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "build": "gatsby build",
+    "dev": "gatsby develop",
+    "start": "npm run dev",
+    "serve": "gatsby serve"
+  }
+}

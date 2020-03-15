@@ -1,6 +1,7 @@
 root: true
+parser: babel-eslint
 extends:
-  - airbnb-base
+  - airbnb
   - prettier
 plugins:
   - prettier
@@ -9,13 +10,14 @@ rules:
   ###########
   # PLUGINS #
   ###########
+  import/prefer-default-export: 0
 
   ###########
   # BUILTIN #
   ###########
-  no-param-reassign: off
-  no-underscore-dangle: off
-  no-plusplus: off
+  no-param-reassign: 0
+  no-underscore-dangle: 0
+  no-plusplus: 0
 
   ###########
   # SPECIAL #
