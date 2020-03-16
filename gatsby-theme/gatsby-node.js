@@ -75,7 +75,10 @@ exports.createPages = ({ graphql, actions, reporter, pathPrefix }) => {
         next = null
       }
 
-      const pagePath = `${pathPrefix}${node.fields.slug}`
+      let pagePath = `${pathPrefix}${node.fields.slug}`
+      if (!pagePath.startsWith('/')) {
+        pagePath = `/${pagePath}`
+      }
       const permalink = `${result.data.site.siteMetadata.siteUrl}${node.fields.slug}`
 
       createPage({
