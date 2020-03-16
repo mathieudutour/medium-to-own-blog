@@ -1,7 +1,7 @@
 {
   "name": "gatsby-theme-medium-to-own-blog",
   "description": "Gatsby theme for Medium-to-own-blog",
-  "version": "0.2.12",
+  "version": "0.2.13",
   "author": "Mathieu Dutour <mathieu@dutour.me>",
   "repository": {
     "type": "git",

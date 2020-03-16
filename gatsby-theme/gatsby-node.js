@@ -5,9 +5,12 @@ exports.onCreateNode = ({ node, actions, getNode }, themeOptions) => {
   const { createNodeField } = actions
 
   if (node.internal.type === 'Mdx') {
-    const value = `${
+    let value = `${
       themeOptions.pathPrefix ? themeOptions.pathPrefix : ''
     }${createFilePath({ node, getNode })}`
+    if (!value.startsWith('/')) {
+      value = `/${value}`
+    }
     createNodeField({
       name: 'slug',
       node,
@@ -22,7 +25,10 @@ exports.onCreateNode = ({ node, actions, getNode }, themeOptions) => {
   }
 }
 
-exports.createPages = ({ graphql, actions, reporter, pathPrefix }) => {
+exports.createPages = (
+  { graphql, actions, reporter, pathPrefix },
+  themeOptions
+) => {
   const { createPage, createRedirect } = actions
   return graphql(
     `
@@ -75,10 +81,7 @@ exports.createPages = ({ graphql, actions, reporter, pathPrefix }) => {
         next = null
       }
 
-      let pagePath = `${pathPrefix}${node.fields.slug}`
-      if (!pagePath.startsWith('/')) {
-        pagePath = `/${pagePath}`
-      }
+      const pagePath = `${pathPrefix}${node.fields.slug}`
       const permalink = `${result.data.site.siteMetadata.siteUrl}${node.fields.slug}`
 
       createPage({
@@ -86,7 +89,7 @@ exports.createPages = ({ graphql, actions, reporter, pathPrefix }) => {
         component: path.resolve(
           path.join(__dirname, `./src/templates/blog-post.js`)
         ),
-        context: { id: node.id, previous, next, permalink },
+        context: { id: node.id, previous, next, permalink, themeOptions },
       })
 
       if (

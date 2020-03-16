@@ -12,6 +12,7 @@ import Responses from '../components/responses'
 import Layout from '../components/layout'
 import { formatPostDate, formatReadingTime } from '../utils/dates'
 import theme from '../theme'
+import withDefaults from '../../utils/default-options'
 
 const BackLink = Styled(Link)`
   text-decoration: none;
@@ -60,7 +61,9 @@ export default function PageTemplate({
   data: { mdx, site, allWebMentionEntry },
   pageContext,
 }) {
-  const { previous, next, permalink } = pageContext
+  const { previous, next, permalink, themeOptions } = pageContext
+
+  const options = withDefaults(themeOptions)
 
   const webmentions = (allWebMentionEntry || {}).nodes || []
 
@@ -123,7 +126,13 @@ export default function PageTemplate({
             <a
               target="_blank"
               rel="nofollow noopener noreferrer"
-              href={`${site.siteMetadata.githubUrl}/edit/master/content${mdx.fields.slug}index.md`}
+              href={`${site.siteMetadata.githubUrl}/edit/master/${
+                options.contentPath
+              }${
+                options.pathPrefix
+                  ? mdx.fields.slug.replace(options.pathPrefix, '')
+                  : mdx.fields.slug
+              }index.md`}
             >
               Edit this post on GitHub
             </a>
