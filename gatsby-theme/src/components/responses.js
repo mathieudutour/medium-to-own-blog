@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Styled from '@emotion/styled'
 
 import { formatPostDate } from '../utils/dates'
-import theme from '../../theme'
+import theme from '../theme'
 
 const AvatarWrapper = Styled.div`
   display: flex;
@@ -58,8 +58,8 @@ function Avatar({ author, published }) {
 const ShowReponses = Styled.button`
   cursor: pointer;
   width: 100%;
-  color: rgba(0, 0, 0, 0.84);
-  border: 1px solid lavender;
+  color: ${theme.colors.text};
+  border: 1px solid ${theme.colors.primary};
   border-radius: 3px;
   padding: 20px;
   text-align: center;
@@ -72,7 +72,7 @@ const Wrapper = Styled.ul`
 
   & li {
     box-shadow: ${theme.shadows.box};
-    border: 1px solid ${theme.colors.boxBorder};
+    border: 1px solid ${theme.colors.separator};
     padding: 15px 20px;
   }
 

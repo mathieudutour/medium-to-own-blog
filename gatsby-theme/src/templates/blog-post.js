@@ -11,11 +11,12 @@ import Embed from '../components/embed'
 import Responses from '../components/responses'
 import Layout from '../components/layout'
 import { formatPostDate, formatReadingTime } from '../utils/dates'
+import theme from '../theme'
 
 const BackLink = Styled(Link)`
   text-decoration: none;
   font-size: 48px;
-  color: lavender;
+  color: ${theme.colors.primary};
   margin-left: -40px;
 `
 
@@ -45,7 +46,7 @@ const Footer = Styled.footer`
 const Separator = Styled.hr`
   margin: 24px 0;
   border: 0;
-  background: rgba(0, 0, 0, 0.1);
+  background: ${theme.colors.separator};
   height: 1px;
 `
 

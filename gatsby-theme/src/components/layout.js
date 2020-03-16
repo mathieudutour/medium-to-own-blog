@@ -1,7 +1,7 @@
 import React from 'react'
-import { Global, css } from '@emotion/core'
+import { Global } from '@emotion/core'
 
-import theme from '../../theme'
+import theme from '../theme'
 
 const Layout = ({ children }) => (
   <main>
@@ -29,7 +29,7 @@ const Layout = ({ children }) => (
           font-weight: 400;
           font-family: ${theme.fonts.sansSerif};
           height: 100%;
-          background: #ffffff;
+          background: ${theme.colors.background};
 
           color: ${theme.colors.text};
           text-rendering: optimizeLegibility;
@@ -112,9 +112,8 @@ const Layout = ({ children }) => (
         }
 
         pre {
-          overflow: scroll;
+          overflow-x: auto;
           padding: 20px;
-          white-space: pre-wrap;
         }
 
         pre code {

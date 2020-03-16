@@ -20,7 +20,7 @@ const Container = Styled.div`
 const Section = ({ name, centered, children, big }) => {
   return (
     <Wrapper id={name} centered={centered}>
-      <Container>{children}</Container>
+      <Container big={big}>{children}</Container>
     </Wrapper>
   )
 }

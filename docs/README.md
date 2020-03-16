@@ -12,7 +12,7 @@ Check out [this article](https://css-tricks.com/using-your-domain-with-a-netlify
 
 `medium-to-own-blog` allows you to change the default theme styling by updating the theme values.
 
-First, you must create a theme file and then you can override theme values. See all [theme values](../gatsby-theme/theme.js)
+First, you must create a theme file and then you can override theme values. See all [theme values](../gatsby-theme/src/theme.js)
 
 ```js
 // src/gatsby-theme-medium-to-own-blog/theme.js

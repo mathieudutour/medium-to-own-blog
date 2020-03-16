@@ -1,4 +1,5 @@
 const withDefaults = require(`./utils/default-options`)
+const theme = require(`./src/theme`)
 
 module.exports = themeOptions => {
   const options = withDefaults(themeOptions)
@@ -72,8 +73,8 @@ module.exports = themeOptions => {
         name: options.config.title,
         short_name: options.config.title,
         start_url: '/',
-        background_color: '#001724',
-        theme_color: '#001724',
+        background_color: theme.colors.background,
+        theme_color: theme.colors.background,
         display: 'minimal-ui',
         icon: `${options.imagesPath}/icon.png`, // This path is relative to the root of the site.
       },
@@ -145,5 +146,5 @@ module.exports = themeOptions => {
     `gatsby-plugin-netlify-cms`,
   ]
 
-  return { plugins, pathPrefix: options.pathPrefix }
+  return { plugins }
 }

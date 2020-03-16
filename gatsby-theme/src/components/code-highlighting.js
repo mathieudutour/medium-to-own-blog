@@ -1,6 +1,6 @@
 import React from 'react'
 import Highlight, { defaultProps } from 'prism-react-renderer'
-import theme from '../../theme'
+import theme from '../theme'
 
 if (!theme.highlighting.plain) {
   theme.highlighting.plain = {}

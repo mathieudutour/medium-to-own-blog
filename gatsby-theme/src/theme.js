@@ -6,7 +6,10 @@ const colors = {
   codeBackground: 'rgb(243, 243, 243)',
   primary: 'lavender',
   boxShadow: 'rgba(0, 0, 0, 0.04)',
-  boxBorder: 'rgba(0, 0, 0, 0.09)',
+  separator: 'rgba(0, 0, 0, 0.09)',
+  categories: {
+    // the background colors of post's categories
+  },
 }
 
 const fonts = {

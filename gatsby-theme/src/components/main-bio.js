@@ -2,7 +2,7 @@ import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import Image from 'gatsby-image'
 import Styled from '@emotion/styled'
-import theme from '../../theme'
+import theme from '../theme'
 
 const socialURLs = {
   twitter: 'https://twitter.com',
@@ -175,16 +175,9 @@ function Bio() {
         </SocialLinks>
         <p>{bio}</p>
       </Wrapper>
-      <Image
-        className="avatar"
+      <Avatar
         fixed={avatar.childImageSharp.fixed}
         alt={author}
-        style={{
-          marginBottom: 0,
-          minWidth: 150,
-          borderRadius: '100%',
-          border: '8px solid lavender',
-        }}
         imgStyle={{
           borderRadius: '50%',
         }}
