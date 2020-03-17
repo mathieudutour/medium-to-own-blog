@@ -6,6 +6,7 @@ module.exports = themeOptions => {
   const config = themeOptions.config || {}
 
   return {
+    ...themeOptions,
     pathPrefix,
     contentPath,
     imagesPath,

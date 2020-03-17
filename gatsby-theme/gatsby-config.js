@@ -146,5 +146,15 @@ module.exports = themeOptions => {
     `gatsby-plugin-netlify-cms`,
   ]
 
+  if (options.config.goatCounterCode) {
+    plugins.push({
+      resolve: `gatsby-plugin-goatcounter`,
+      optiona: {
+        code: options.config.goatCounterCode,
+        urlCleanup: true,
+      },
+    })
+  }
+
   return { plugins }
 }

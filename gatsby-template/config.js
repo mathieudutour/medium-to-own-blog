@@ -21,4 +21,6 @@ module.exports = {
     linkedin: '',
     instagram: '',
   },
+  // GoatCounter code to enable analytics. See https://github.com/mathieudutour/medium-to-own-blog/tree/master/docs#analytics-tracking-page-views-etc
+  goatCounterCode: null,
 }
