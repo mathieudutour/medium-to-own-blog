@@ -58,10 +58,3 @@ Any component or section is able to be replaced with your own custom component.
 This opens up a full customization of the blog to your designed needs. You can copy any component directly from `medium-to-own-blog` and alter it how you like, or you can create your own component to replace `medium-to-own-blog`'s entirely.
 
 Check out [the Gatsby documentation](https://www.gatsbyjs.org/docs/themes/shadowing/).
-
-## Tasks
-
-- [ ] draft/published
-- [ ] canonical link
-- [ ] add analytics for your blog
-- [ ] add a mailing list to your blog
