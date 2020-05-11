@@ -111,7 +111,7 @@ const WebmentionLink = Styled.a`
 
 const Avatar = Styled(Image)`
   margin-bottom: 0;
-  min-width: 150px
+  min-width: 150px;
   border-radius: 100%;
   border: 8px solid ${theme.colors.primary};
 `
