@@ -48,6 +48,7 @@ exports.createPages = (
               }
               frontmatter {
                 redirect_from
+                redirect_to
                 title
               }
             }
@@ -104,6 +105,19 @@ exports.createPages = (
             toPath: pagePath,
             isPermanent: true,
           })
+        })
+      }
+
+      if (
+        node.frontmatter &&
+        node.frontmatter.redirect_to &&
+        node.frontmatter.redirect_to.length
+      ) {
+        createRedirect({
+          fromPath: pagePath,
+          toPath: node.frontmatter.redirect_to,
+          isPermanent: true,
+          redirectInBrowser: true,
         })
       }
     })
