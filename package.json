@@ -38,7 +38,7 @@
   "dependencies": {
     "fs-extra": "^8.1.0",
     "inquirer": "^7.1.0",
-    "jimp": "^0.9.5",
+    "jimp": "^0.16.2",
     "jsdom": "^16.2.1",
     "jszip": "^3.2.2",
     "ora": "^4.0.3",
